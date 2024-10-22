@@ -5,6 +5,10 @@ import {
   deleteMovieSuccess,
   deleteMovieFailure,
   editMovieSuccess,
+  addMovieFailure,
+  addMovieSuccess,
+  searchMoviesSuccess,
+  searchMoviesFailure,
 } from "./actions";
 import {
   onSnapshot,
@@ -14,9 +18,15 @@ import {
   DocumentReference,
   doc,
   updateDoc,
+  setDoc,
+  collection,
 } from "firebase/firestore";
+import uuid from "react-native-uuid";
+import { MovieList, SearchResults } from "../types";
+import { MOVIEDB_API_KEY } from "../../../../apiKeys";
 
-export const fetchMovies = (movieQueryRef: any) => {
+// Thunk for fetching movies in the Firestore collection
+export const fetchMoviesFromFirestore = (movieQueryRef: any) => {
   return (dispatch: any) => {
     try {
       const subscriber = onSnapshot(
@@ -44,6 +54,7 @@ export const fetchMovies = (movieQueryRef: any) => {
   };
 };
 
+// Thunk for deleting movie from Firestore collection
 export const deleteMovie = (item: DocumentReference<unknown, DocumentData>) => {
   return async (dispatch: any) => {
     try {
@@ -55,6 +66,7 @@ export const deleteMovie = (item: DocumentReference<unknown, DocumentData>) => {
   };
 };
 
+// Thunk for editing movie titles in Firestore
 export const editMovie = (id: string, newTitle: string) => {
   return async (dispatch: any) => {
     try {
@@ -65,6 +77,77 @@ export const editMovie = (id: string, newTitle: string) => {
       dispatch(editMovieSuccess(id, newTitle));
     } catch (error) {
       console.error("Error updating movie: ", error);
+    }
+  };
+};
+
+// Thunk for adding new movies to Firestore collection
+export const addMovieToFirestore = (movie: MovieList) => {
+  return async (dispatch: any) => {
+    const generatedId = movie.id || uuid.v4();
+    try {
+      await setDoc(doc(FIREBASE_DB, "movies", `${generatedId}`), {
+        title: movie.title,
+        id: generatedId,
+        imageSrc: movie.imageSrc,
+      });
+      dispatch(addMovieSuccess({ ...movie, id: generatedId }));
+    } catch (error) {
+      console.error("Error adding movie: ", error);
+      dispatch(addMovieFailure(error));
+    }
+  };
+};
+
+// Thunk for subscribing to Firestore movies collection
+export const subscribeToMovies = () => {
+  return (dispatch: any) => {
+    const collectionRef = collection(FIREBASE_DB, "movies");
+
+    const unsubscribe = onSnapshot(collectionRef, (snapshot) => {
+      const updatedMovieList = snapshot.docs.map((doc) => ({
+        ...doc.data(),
+        id: doc.id,
+      }));
+      dispatch(fetchMoviesSuccess(updatedMovieList)); // Dispatch fetched movies to the state
+    });
+
+    return unsubscribe; // Return unsubscribe for clean up
+  };
+};
+
+
+// Thunk for searching movies using The Movie DB API
+export const searchMovies = (keyword: string) => {
+  return async (dispatch: any) => {
+    const generatedId = uuid.v4();
+    try {
+      const response = await fetch(
+        `https://api.themoviedb.org/3/search/movie?api_key=${MOVIEDB_API_KEY}&language=en-US&query=${keyword}&page=1&include_adult=false`
+      );
+      const data = await response.json();
+      console.log("API Response Data:", data); // Debugging log
+
+      if (!data.results || data.results.length === 0) {
+        console.log("No results found for the given search term.");
+        dispatch(searchMoviesSuccess([]));
+        return;
+      }
+
+      // Map the API response to the SearchResults state
+      const mappedResults: SearchResults[] = data.results.map((item: any) => ({
+        original_title: item.original_title,
+        id: generatedId,
+        poster_path: item.poster_path,
+        release_date: item.release_date,
+      }));
+
+      console.log("Mapped Results:", mappedResults); // Debugging log
+
+      dispatch(searchMoviesSuccess(mappedResults));
+    } catch (error) {
+      console.error("Error searching movies: ", error);
+      dispatch(searchMoviesFailure(error));
     }
   };
 };

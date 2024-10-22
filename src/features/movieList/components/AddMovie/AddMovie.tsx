@@ -24,29 +24,29 @@ import uuid from "react-native-uuid";
 import { Icon } from "@rneui/base";
 import { MOVIEDB_API_KEY } from "../../../../../apiKeys";
 import Toast from "react-native-toast-message";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch } from "features/store/store";
+import { MovieList, SearchResults } from "features/movieList/types";
+import { addMovieToFirestore, searchMovies, subscribeToMovies } from "features/movieList/actions/thunks";
 
 export default function AddMovie() {
+  const dispatch: AppDispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
-  const [searchResults, setSearchResults] = useState([
-    {
-      original_title: "The Movie",
-      release_date: "Today",
-      poster_path: "https://via.placeholder.com/150",
-      vote_average: 8.5,
-      overview: "Overview of the movie",
-    },
-  ]);
-  const [movieSearch, setMovieSearch] = useState("");
-  const [movieList, setMovieList] = useState<any[]>([]);
+  const searchResults = useSelector((state: any) => state.movies.searchResults); // Fetch search results from Redux
+  const [movieList, setMovieList] = useSelector(
+    (state: any) => state.movies.movieList
+  );
 
-  const writeDataToFireStore = async (item: {
-    original_title: any;
-    release_date?: string;
-    poster_path?: string;
-  }) => {
-    const generatedId = uuid.v4();
+  // Call the searchMovies thunk
+  const handleSearch = () => {
+    dispatch(searchMovies(keyword));
+    console.log("search Under Way");
+  };
+
+  console.log(searchResults);
+  const handleMovieSave = (item: SearchResults) => {
     const movieExists = movieList.some(
-      (movie) => movie.title === item.original_title
+      (movie: MovieList) => movie.title === item.original_title
     );
 
     if (movieExists) {
@@ -59,75 +59,27 @@ export default function AddMovie() {
       return;
     }
 
-    try {
-      const docRef = await setDoc(
-        doc(FIREBASE_DB, "movies", `${generatedId}`),
-        {
-          title: item.original_title,
-          id: generatedId,
-          imageSrc: item.poster_path,
-        }
-      );
+    const movieToSave: MovieList = {
+      title: item.original_title,
+      id: item.id,
+      imageSrc: item.poster_path || "",
+    };
 
-      // Add the movie to the local movie list (state)
-      setMovieList((prevList) => [
-        ...prevList,
-        {
-          title: item.original_title,
-          id: generatedId,
-          imageSrc: item.poster_path,
-        },
-      ]);
-      Toast.show({
-        type: "success",
-        text1: "Success!",
-        text2: "Movie added successfully",
-      });
-    } catch (error) {
-      console.error("Error adding movie: ", error);
-      Toast.show({
-        type: "error",
-        text1: "Error!",
-        text2: "Error adding movie!",
-      });
-    }
-  };
-
-  const getMovie = () => {
-    fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=${MOVIEDB_API_KEY}&language=en-US&query=${keyword}&page=1&include_adult=false`
-    )
-      .then((res) => res.json())
-      .then((data) => {
-        setSearchResults(data.results);
-      })
-      .catch((err) => console.error(err));
-  };
-
-  // Function to subscribe to real-time updates from Firestore
-  const subscribeToMovies = () => {
-    const collectionRef = collection(FIREBASE_DB, "movies");
-
-    // Listen for Firestore updates (add, delete, modify)
-    const unsubscribe = onSnapshot(collectionRef, (snapshot) => {
-      const updatedMovieList = snapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      setMovieList(updatedMovieList); // Update local state with the latest movie list
-    });
-
-    return unsubscribe; // Return the unsubscribe function to clean up
+    dispatch(addMovieToFirestore(movieToSave));
   };
 
   // Effect to subscribe to Firestore updates
   useEffect(() => {
-    const unsubscribe = subscribeToMovies();
+    const unsubscribe = dispatch(subscribeToMovies());
 
     return () => {
       unsubscribe(); // Clean up the listener when component unmounts
     };
-  }, []);
+  }, [dispatch]);
+
+  function handleSaveMovie(item: MovieList): void {
+    throw new Error("Function not implemented.");
+  }
 
   return (
     <>
@@ -137,15 +89,15 @@ export default function AddMovie() {
             style={styles.searchInput}
             placeholder="Search movies"
             onChangeText={(text: string) => setKeyword(text)}
-            onSubmitEditing={getMovie}
+            onSubmitEditing={handleSearch}
           />
-          <TouchableOpacity onPress={getMovie}>
+          <TouchableOpacity onPress={handleSearch}>
             <Icon name="search" color="white"></Icon>
           </TouchableOpacity>
         </View>
         {searchResults.length > 1 ? (
           <ScrollView style={styles.searchResultsContainer}>
-            {searchResults.map((item, index) => (
+            {searchResults.map((item: SearchResults, index: number) => (
               <ListItem
                 key={index}
                 bottomDivider
@@ -168,7 +120,7 @@ export default function AddMovie() {
                     <Button
                       title="Save Movie"
                       type="outline"
-                      onPress={() => writeDataToFireStore(item)}
+                      onPress={() => handleMovieSave(item)}
                     ></Button>
                   </View>
                 </ListItem.Content>
@@ -182,5 +134,3 @@ export default function AddMovie() {
     </>
   );
 }
-
-/* <Button title="Search" type="outline" onPress={getMovie}></Button> */

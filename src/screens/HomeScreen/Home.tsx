@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovie,
   editMovie,
-  fetchMovies,
+  fetchMoviesFromFirestore,
 } from "features/movieList/actions/thunks";
 import { AppDispatch } from "features/store/store";
 import { movieQueryRef } from "config/firebase";
-import { searchMovie } from "features/movieList/actions/actions";
+import { searchMovieList } from "features/movieList/actions/actions";
 
 export default function Home() {
   const dispatch: AppDispatch = useDispatch();
@@ -23,7 +23,7 @@ export default function Home() {
   const [newTitle, setNewTitle] = useState(""); // State for the new movie title
 
   useEffect(() => {
-    const unsubscribe = dispatch(fetchMovies(movieQueryRef));
+    const unsubscribe = dispatch(fetchMoviesFromFirestore(movieQueryRef));
 
     return () => {
       if (unsubscribe) {
@@ -35,7 +35,7 @@ export default function Home() {
   // Function to handle search
   const handleSearch = (query: string) => {
     setSearchQuery(query);
-    dispatch(searchMovie(query)); // Dispatch the search action
+    dispatch(searchMovieList(query)); // Dispatch the search action
   };
 
   // Use filteredMovieList if there is a search query, otherwise fallback to the full movieList

@@ -2,6 +2,7 @@ export interface Movie {
   movieList: MovieList[];
   UnfilteredMovieList: UnfilteredMovieList[];
   filteredMovieList: FilteredMovieList[];
+  searchResults: SearchResults[];
 }
 
 export interface MovieList {
@@ -23,4 +24,11 @@ export interface FilteredMovieList {
   id: string | number[];
   imageSrc: string;
   alt?: string;
+}
+
+export interface SearchResults {
+  original_title: string | any;
+  id: string | number[];
+  poster_path?: string;
+  release_date?: string;
 }
