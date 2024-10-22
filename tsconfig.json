@@ -1,6 +1,14 @@
 {
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "@config/*": ["src/config/*"],
+      "@features/*": ["src/features/*"],
+      "@screens/*": ["src/screens/*"],
+      "@movieList/*": ["src/features/movieList/*"],
+    },
+    "jsx": "react",
     "strict": true
   }
 }
