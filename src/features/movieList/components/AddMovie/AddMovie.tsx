@@ -27,23 +27,24 @@ import Toast from "react-native-toast-message";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "features/store/store";
 import { MovieList, SearchResults } from "features/movieList/types";
-import { addMovieToFirestore, searchMovies, subscribeToMovies } from "features/movieList/actions/thunks";
+import {
+  addMovieToFirestore,
+  searchMovies,
+  subscribeToMovies,
+} from "features/movieList/actions/thunks";
 
 export default function AddMovie() {
   const dispatch: AppDispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
   const searchResults = useSelector((state: any) => state.movies.searchResults); // Fetch search results from Redux
-  const [movieList, setMovieList] = useSelector(
-    (state: any) => state.movies.movieList
-  );
+  const movieList = useSelector((state: any) => state.movies.movieList);
 
   // Call the searchMovies thunk
   const handleSearch = () => {
     dispatch(searchMovies(keyword));
-    console.log("search Under Way");
   };
 
-  console.log(searchResults);
+  console.log("movieList" + movieList[1]);
   const handleMovieSave = (item: SearchResults) => {
     const movieExists = movieList.some(
       (movie: MovieList) => movie.title === item.original_title
