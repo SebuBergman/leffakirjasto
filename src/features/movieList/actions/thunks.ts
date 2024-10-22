@@ -126,10 +126,8 @@ export const searchMovies = (keyword: string) => {
         `https://api.themoviedb.org/3/search/movie?api_key=${MOVIEDB_API_KEY}&language=en-US&query=${keyword}&page=1&include_adult=false`
       );
       const data = await response.json();
-      console.log("API Response Data:", data); // Debugging log
 
       if (!data.results || data.results.length === 0) {
-        console.log("No results found for the given search term.");
         dispatch(searchMoviesSuccess([]));
         return;
       }
@@ -141,8 +139,6 @@ export const searchMovies = (keyword: string) => {
         poster_path: item.poster_path,
         release_date: item.release_date,
       }));
-
-      console.log("Mapped Results:", mappedResults); // Debugging log
 
       dispatch(searchMoviesSuccess(mappedResults));
     } catch (error) {

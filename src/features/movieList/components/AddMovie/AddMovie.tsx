@@ -44,14 +44,12 @@ export default function AddMovie() {
     dispatch(searchMovies(keyword));
   };
 
-  console.log("movieList" + movieList[1]);
   const handleMovieSave = (item: SearchResults) => {
     const movieExists = movieList.some(
       (movie: MovieList) => movie.title === item.original_title
     );
 
     if (movieExists) {
-      console.log("Movie already exists in the list.");
       Toast.show({
         type: "error",
         text1: "Error!",

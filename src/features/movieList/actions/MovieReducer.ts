@@ -74,7 +74,6 @@ export const movieReducer = (state = initialState, action: any) => {
         ),
       };
     case SEARCH_MOVIES_SUCCESS:
-      console.log("SEARCH_MOVIES_SUCCESS payload:", action.payload); // Debugging
       return {
         ...state,
         searchResults: action.payload,
