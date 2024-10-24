@@ -17,7 +17,6 @@ interface MovieState {
 
 const initialState = {
   movieList: [],
-  tvShowList: [],
   unfilteredMovieList: [],
   filteredMovieList: [],
   searchResults: [
@@ -28,7 +27,7 @@ const initialState = {
       poster_path: "https://via.placeholder.com/150",
     },
   ],
-  error: null,
+  error: null, // Add error state for proper error handling
 };
 
 export const movieReducer = (state = initialState, action: any) => {

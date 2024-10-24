@@ -1,37 +1,25 @@
 import React, { useEffect, useState } from "react";
 import {
-  FlatList,
-  Keyboard,
   ScrollView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
   Image,
-  Alert,
 } from "react-native";
 import { ListItem, Button, Input } from "@rneui/base";
 import styles from "./styles";
-import {
-  addDoc,
-  collection,
-  doc,
-  onSnapshot,
-  setDoc,
-} from "firebase/firestore";
-import { FIREBASE_DB } from "../../../../config/firebase/firebase";
-import uuid from "react-native-uuid";
 import { Icon } from "@rneui/base";
-import { MOVIEDB_API_KEY } from "../../../../../apiKeys";
 import Toast from "react-native-toast-message";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "features/store/store";
 import { MovieList, SearchResults } from "features/movieList/types";
 import {
   addMovieToFirestore,
   searchMovies,
   subscribeToMovies,
 } from "features/movieList/actions/thunks";
+import { AppDispatch } from "features/store/store";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export default function AddMovie() {
   const dispatch: AppDispatch = useDispatch();
@@ -76,10 +64,6 @@ export default function AddMovie() {
     };
   }, [dispatch]);
 
-  function handleSaveMovie(item: MovieList): void {
-    throw new Error("Function not implemented.");
-  }
-
   return (
     <>
       <View style={styles.container}>
@@ -117,10 +101,11 @@ export default function AddMovie() {
                   </ListItem.Subtitle>
                   <View style={styles.buttonContainer}>
                     <Button
-                      title="Save Movie"
                       type="outline"
                       onPress={() => handleMovieSave(item)}
-                    ></Button>
+                    >
+                      Add Movie
+                    </Button>
                   </View>
                 </ListItem.Content>
               </ListItem>

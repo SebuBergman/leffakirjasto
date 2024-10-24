@@ -1,14 +1,17 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Home } from "./src/screens";
 import AddMovie from "./src/features/movieList/components/AddMovie/AddMovie";
 import { Provider } from "react-redux";
-import store from "features/store/store";
 import Toast, { BaseToastProps } from "react-native-toast-message";
 import { View, Text, StatusBar } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import AntDesign from "@expo/vector-icons/AntDesign";
+import store from "features/store/store";
+import AddScreen from "screens/AddScreen/AddScreen";
+import MovieListScreen from "screens/MovieListScreen/MovieList";
+import TvShowListScreen from "screens/TvShowListScreen/TvShowList";
+import AddTvShow from "features/tvShowList/components/AddTvShow";
 
 const Tabs = createBottomTabNavigator();
 
@@ -102,8 +105,8 @@ export default function App() {
           })}
         >
           <Tabs.Screen
-            name="Home"
-            component={Home}
+            name="Movies"
+            component={MovieListScreen}
             options={{
               tabBarIcon: () => (
                 <AntDesign name="home" size={24} color="white" />
@@ -114,8 +117,40 @@ export default function App() {
             }}
           />
           <Tabs.Screen
+            name="TvShows"
+            component={TvShowListScreen}
+            options={{
+              tabBarIcon: () => (
+                <AntDesign name="home" size={24} color="white" />
+              ),
+              tabBarLabelStyle: {
+                fontSize: 15,
+              },
+            }}
+          />
+          {/*<Tabs.Screen
+            name="Add Movie"
+            component={AddScreen}
+            options={{
+              tabBarIcon: () => <Ionicons name="add" size={24} color="white" />,
+              tabBarLabelStyle: {
+                fontSize: 15,
+              },
+            }}
+          />*/}
+          <Tabs.Screen
             name="Add Movie"
             component={AddMovie}
+            options={{
+              tabBarIcon: () => <Ionicons name="add" size={24} color="white" />,
+              tabBarLabelStyle: {
+                fontSize: 15,
+              },
+            }}
+          />
+          <Tabs.Screen
+            name="Add TvShow"
+            component={AddTvShow}
             options={{
               tabBarIcon: () => <Ionicons name="add" size={24} color="white" />,
               tabBarLabelStyle: {

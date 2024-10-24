@@ -1,12 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import { movieReducer } from "features/movieList/actions/MovieReducer";
+import rootReducer from "./combinedReducers";
 
 const store = configureStore({
-  reducer: {
-    movies: movieReducer,
-  },
+  reducer: rootReducer,
 });
 
 // Define `AppDispatch` as the type for dispatch that can handle Thunks
 export type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>; // Type for your store state
 export default store;

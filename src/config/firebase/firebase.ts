@@ -25,3 +25,6 @@ export const FIREBASE_DB = getFirestore(FIREBASE_APP);
 
 export const movieRef = collection(FIREBASE_DB, "movies");
 export const movieQueryRef = query(movieRef, orderBy("title"));
+
+export const tvShowRef = collection(FIREBASE_DB, "tvshows");
+export const tvShowQueryRef = query(tvShowRef, orderBy("title"));

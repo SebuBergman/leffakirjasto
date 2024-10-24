@@ -24,7 +24,6 @@ export default StyleSheet.create({
 
   //Search Input styles
   searchContainer: {
-    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     marginTop: 20,

@@ -8,11 +8,13 @@ import {
   editMovie,
   fetchMoviesFromFirestore,
 } from "features/movieList/actions/thunks";
-import { AppDispatch } from "features/store/store";
 import { movieQueryRef } from "config/firebase";
 import { searchMovieList } from "features/movieList/actions/actions";
+import { AppDispatch } from "features/store/store";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
-export default function Home() {
+export default function MovieListScreen() {
   const dispatch: AppDispatch = useDispatch();
   const movieList = useSelector((state: any) => state.movies.movieList);
   const filteredMovieList = useSelector(
@@ -92,7 +94,7 @@ export default function Home() {
                       onChangeText={setNewTitle}
                       placeholder="Edit title"
                     />
-                    <Button title="save" onPress={handleSaveEdit} />
+                    <Button title="Save" onPress={handleSaveEdit} />
                   </View>
                 ) : (
                   <>
@@ -104,12 +106,20 @@ export default function Home() {
                         title="Edit"
                         type="outline"
                         onPress={() => handleEdit(movie)}
-                      />
+                      >
+                        <MaterialIcons name="edit" size={24} color="white" />
+                      </Button>
                       <Button
                         title="Delete"
                         type="outline"
                         onPress={() => handleDelete(movie)}
-                      />
+                      >
+                        <MaterialCommunityIcons
+                          name="delete"
+                          size={24}
+                          color="white"
+                        />
+                      </Button>
                     </View>
                   </>
                 )}
@@ -123,32 +133,3 @@ export default function Home() {
     </View>
   );
 }
-
-/*
-<View style={styles.refreshContainer}>
-  <TouchableOpacity
-    onPress={refreshList} style={styles.refreshButton}
-  >
-    <Icon name="refresh"></Icon>
-  </TouchableOpacity>
-</View>
-
-const refreshList = () => {
-  const subscriber = onSnapshot(movieQueryRef, {
-    next: (snapshot) => {
-      const movieList: any[] = [];
-      snapshot.docs.forEach((doc) => {
-        movieList.push({
-          id: doc.id,
-          ...doc.data(),
-        });
-      });
-      setMovieList(movieList);
-      setUnfilteredMovieList(movieList);
-    },
-  });
-
-  // // Unsubscribe from events when no longer in use
-  return () => subscriber();
-};
-*/

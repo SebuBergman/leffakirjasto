@@ -20,7 +20,8 @@ export default StyleSheet.create({
   buttonContainer: {
     justifyContent: "center",
     flexDirection: "row",
-    paddingTop: 10,
+    marginTop: 20,
+    gap: 10,
   },
 
   //Refresh button
@@ -35,11 +36,11 @@ export default StyleSheet.create({
 
   editInput: {
     height: 40,
-    margin: 12,
+    marginBottom: 10,
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    width: 340,
+    width: 220,
     backgroundColor: "#FFFFFF",
   },
 
