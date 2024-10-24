@@ -23,7 +23,7 @@ import {
 } from "firebase/firestore";
 import uuid from "react-native-uuid";
 import { MovieList, SearchResults } from "../types";
-import { MOVIEDB_API_KEY } from "config/apiKeys/apiKeys";
+import { MOVIEDB_API_KEY } from "@env";
 
 // Thunk for fetching movies in the Firestore collection
 export const fetchMoviesFromFirestore = (movieQueryRef: any) => {
