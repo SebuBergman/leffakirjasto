@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { View, TextInput, Button, Text, ScrollView } from "react-native";
 import styles from "./styles"; // Your styles file
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Season, TvShowList } from "../types";
 import { addTvShowToFirestore } from "../actions/thunks";
-import RNPickerSelect from "react-native-picker-select"; // Dropdown component
 import uuid from "react-native-uuid";
 import { AppDispatch } from "features/store/store";
 import { CheckBox } from "react-native-elements"; // Checkbox component
+import Toast from "react-native-toast-message";
 
 export default function AddTvShow() {
   const dispatch: AppDispatch = useDispatch();
@@ -16,6 +16,7 @@ export default function AddTvShow() {
     [key: number]: boolean;
   }>({}); // Checkbox states
   const [title, setTitle] = useState("");
+  const tvshowList = useSelector((state: any) => state.tvshows.tvShowList);
 
   // Handle checkbox toggle
   const toggleSeason = (seasonNumber: number) => {
@@ -25,7 +26,19 @@ export default function AddTvShow() {
     }));
   };
 
-  const handleAddTvShow = () => {
+  const handleTvShowAdd = (title: string) => {
+    const movieExists = tvshowList.some(
+      (movie: TvShowList) => movie.title === title
+    );
+
+    if (movieExists) {
+      Toast.show({
+        type: "error",
+        text1: "Error!",
+        text2: "Tv Show already exists in the list.",
+      });
+      return;
+    }
     // Ensure selectedSeasons is a number
     if (selectedSeasons === null) return; // Early exit if null
 
@@ -105,7 +118,7 @@ export default function AddTvShow() {
           </View>
         )}
       </ScrollView>
-      <Button title="Add TV Show" onPress={handleAddTvShow} />
+      <Button title="Add TV Show" onPress={() => handleTvShowAdd(title)} />
     </View>
   );
 }
