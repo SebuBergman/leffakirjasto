@@ -7,7 +7,7 @@ import {
   FIREBASE_MESSAGING_SENDER_ID,
   FIREBASE_PROJECT_ID,
   FIREBASE_STORAGE_BUCKET,
-} from "../apiKeys/apiKeys";
+} from "@env";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
