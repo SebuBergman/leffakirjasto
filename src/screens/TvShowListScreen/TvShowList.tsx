@@ -142,7 +142,7 @@ export default function TvShowListScreen() {
         <ScrollView style={styles.tvShowContainer}>
           {tvShowsToDisplay.map((tvshow: any) => (
             <ListItem
-              key={tvshow.id}
+              key={tvshow.title}
               bottomDivider
               containerStyle={{ backgroundColor: "#121212", padding: 0 }}
             >
@@ -223,6 +223,9 @@ export default function TvShowListScreen() {
                           {convertSeasonsToArray(tvshow.seasons).map(
                             (season: any) => (
                               <CheckBox
+                                iconType="material-community"
+                                checkedIcon="checkbox-outline"
+                                uncheckedIcon={"checkbox-blank-outline"}
                                 key={season.seasonNumber}
                                 title={`S ${season.seasonNumber}`}
                                 checked={

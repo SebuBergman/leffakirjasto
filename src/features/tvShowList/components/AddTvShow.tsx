@@ -90,6 +90,9 @@ export default function AddTvShow() {
                 return (
                   <View key={seasonNumber} style={styles.checkboxContainer}>
                     <CheckBox
+                      iconType="material-community"
+                      checkedIcon="checkbox-outline"
+                      uncheckedIcon={"checkbox-blank-outline"}
                       checked={seasonCheckStates[seasonNumber] || false} // Check if current season is selected
                       onPress={() => toggleSeason(seasonNumber)}
                       title={`Season ${seasonNumber}`}

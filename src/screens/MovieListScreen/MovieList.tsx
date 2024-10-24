@@ -75,7 +75,7 @@ export default function MovieListScreen() {
         <ScrollView style={styles.movieContainer}>
           {moviesToDisplay.map((movie: any) => (
             <ListItem
-              key={movie.id}
+              key={movie.title}
               bottomDivider
               containerStyle={{ backgroundColor: "#121212" }}
             >
