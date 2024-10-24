@@ -12,6 +12,8 @@ import AddScreen from "screens/AddScreen/AddScreen";
 import MovieListScreen from "screens/MovieListScreen/MovieList";
 import TvShowListScreen from "screens/TvShowListScreen/TvShowList";
 import AddTvShow from "features/tvShowList/components/AddTvShow";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Feather from "@expo/vector-icons/Feather";
 
 const Tabs = createBottomTabNavigator();
 
@@ -109,7 +111,11 @@ export default function App() {
             component={MovieListScreen}
             options={{
               tabBarIcon: () => (
-                <AntDesign name="home" size={24} color="white" />
+                <MaterialCommunityIcons
+                  name="movie-open-star"
+                  size={24}
+                  color="white"
+                />
               ),
               tabBarLabelStyle: {
                 fontSize: 15,
@@ -120,16 +126,14 @@ export default function App() {
             name="TvShows"
             component={TvShowListScreen}
             options={{
-              tabBarIcon: () => (
-                <AntDesign name="home" size={24} color="white" />
-              ),
+              tabBarIcon: () => <Feather name="tv" size={24} color="white" />,
               tabBarLabelStyle: {
                 fontSize: 15,
               },
             }}
           />
-          {/*<Tabs.Screen
-            name="Add Movie"
+          <Tabs.Screen
+            name="Add"
             component={AddScreen}
             options={{
               tabBarIcon: () => <Ionicons name="add" size={24} color="white" />,
@@ -137,7 +141,7 @@ export default function App() {
                 fontSize: 15,
               },
             }}
-          />*/}
+          />
           <Tabs.Screen
             name="Add Movie"
             component={AddMovie}

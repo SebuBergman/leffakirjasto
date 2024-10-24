@@ -115,10 +115,13 @@ export default function AddTvShow() {
                 );
               })}
             </View>
+            <Button
+              title="Add TV Show"
+              onPress={() => handleTvShowAdd(title)}
+            />
           </View>
         )}
       </ScrollView>
-      <Button title="Add TV Show" onPress={() => handleTvShowAdd(title)} />
     </View>
   );
 }

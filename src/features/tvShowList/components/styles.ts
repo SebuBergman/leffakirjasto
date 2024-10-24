@@ -35,7 +35,9 @@ const styles = StyleSheet.create({
   },
 
   AddTvShowContainer: {
+    height: "100%",
     padding: 10,
+    marginBottom: 65,
   },
 
   label: {
