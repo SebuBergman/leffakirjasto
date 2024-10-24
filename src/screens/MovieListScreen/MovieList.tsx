@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Image, ScrollView, TouchableOpacity } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import styles from "./styles";
 import { ListItem, Button } from "@rneui/base";
 import { useDispatch, useSelector } from "react-redux";
@@ -11,8 +18,6 @@ import {
 import { movieQueryRef } from "config/firebase";
 import { searchMovieList } from "features/movieList/actions/actions";
 import { AppDispatch } from "features/store/store";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Feather from "@expo/vector-icons/Feather";
 
 export default function MovieListScreen() {

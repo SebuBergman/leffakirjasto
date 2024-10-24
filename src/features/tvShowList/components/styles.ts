@@ -45,11 +45,6 @@ const styles = StyleSheet.create({
     color: "white",
   },
 
-  checkboxLabel: {
-    marginLeft: 8,
-    fontSize: 16,
-  },
-
   seasonCountContainer: {
     marginBottom: 20,
   },

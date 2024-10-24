@@ -13,29 +13,20 @@ export default StyleSheet.create({
   movieWrapper: {
     backgroundColor: "#121212",
   },
-  movieItemContainer: {
-    backgroundColor: "#121212",
-  },
   moviePosterArt: {
     width: 100,
     height: 150,
   },
-  buttonContainer: {
-    justifyContent: "center",
-    flexDirection: "row",
-    marginTop: 20,
-    gap: 10,
-  },
 
   //Refresh button
-  refreshContainer: {
+  /*refreshContainer: {
     display: "flex",
     flexDirection: "row",
     justifyContent: "flex-end",
   },
   refreshButton: {
     justifyContent: "flex-end",
-  },
+  },*/
 
   editInput: {
     height: 40,

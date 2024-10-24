@@ -52,7 +52,11 @@ export const searchTvShowList = (query: string) => {
   };
 };
 
-export const editTvShowSuccess = (newTvShow: string, id: string, updatedSeasons: any) => {
+export const editTvShowSuccess = (
+  newTvShow: string,
+  id: string,
+  updatedSeasons: any
+) => {
   return {
     type: EDIT_TVSHOW,
     payload: { newTvShow, id, updatedSeasons },

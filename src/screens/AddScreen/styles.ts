@@ -8,20 +8,10 @@ export default StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#121212",
   },
-  toggleContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginBottom: 20,
-  },
   formContainer: {
     height: "100%",
     alignItems: "center",
     marginBottom: 48,
-  },
-  heading: {
-    fontSize: 25,
-    textAlign: "center",
-    color: "white",
   },
   switchContainer: {
     flexDirection: "row",

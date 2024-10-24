@@ -1,8 +1,27 @@
 import { FIREBASE_DB } from "config/firebase";
-import { collection, deleteDoc, doc, DocumentData, DocumentReference, onSnapshot, QuerySnapshot, setDoc, updateDoc } from "firebase/firestore";
+import {
+  collection,
+  deleteDoc,
+  doc,
+  DocumentData,
+  DocumentReference,
+  onSnapshot,
+  QuerySnapshot,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import { SeasonsMap, TvShowList } from "../types";
 import uuid from "react-native-uuid";
-import { addTvShowFailure, addTvShowSuccess, deleteTvShowFailure, deleteTvShowSuccess, editTvShowSuccess, editTvShowTitleSuccess, fetchTvShowFailure, fetchTvShowSuccess } from "./actions";
+import {
+  addTvShowFailure,
+  addTvShowSuccess,
+  deleteTvShowFailure,
+  deleteTvShowSuccess,
+  editTvShowSuccess,
+  editTvShowTitleSuccess,
+  fetchTvShowFailure,
+  fetchTvShowSuccess,
+} from "./actions";
 
 // Thunk for fetching Tv Shows in the Firestore collection
 export const fetchTvShowsFromFirestore = (tvShowQueryRef: any) => {
@@ -33,7 +52,9 @@ export const fetchTvShowsFromFirestore = (tvShowQueryRef: any) => {
 };
 
 // Thunk for deleting Tv Shows from Firestore collection
-export const deleteTvShow = (item: DocumentReference<unknown, DocumentData>) => {
+export const deleteTvShow = (
+  item: DocumentReference<unknown, DocumentData>
+) => {
   return async (dispatch: any) => {
     try {
       await deleteDoc(doc(FIREBASE_DB, "tvshows", item.id));
@@ -45,24 +66,24 @@ export const deleteTvShow = (item: DocumentReference<unknown, DocumentData>) => 
 };
 
 // Modify the editTvShow thunk to accept the updated seasons
-  export const editTvShow = (
-    id: string,
-    newTitle: string,
-    updatedSeasons: any
-  ) => {
-    return async (dispatch: any) => {
-      try {
-        const tvShowRef = doc(FIREBASE_DB, "tvshows", id);
-        await updateDoc(tvShowRef, {
-          title: newTitle,
-          seasons: updatedSeasons,
-        });
-        dispatch(editTvShowSuccess(id, newTitle, updatedSeasons));
-      } catch (error) {
-        console.error("Error updating TV Show: ", error);
-      }
-    };
+export const editTvShow = (
+  id: string,
+  newTitle: string,
+  updatedSeasons: any
+) => {
+  return async (dispatch: any) => {
+    try {
+      const tvShowRef = doc(FIREBASE_DB, "tvshows", id);
+      await updateDoc(tvShowRef, {
+        title: newTitle,
+        seasons: updatedSeasons,
+      });
+      dispatch(editTvShowSuccess(id, newTitle, updatedSeasons));
+    } catch (error) {
+      console.error("Error updating TV Show: ", error);
+    }
   };
+};
 
 // Thunk for adding new TV Shows to Firestore collection
 export const addTvShowToFirestore = (tvshow: TvShowList) => {

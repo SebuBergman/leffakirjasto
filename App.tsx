@@ -1,17 +1,14 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import AddMovie from "./src/features/movieList/components/AddMovie/AddMovie";
 import { Provider } from "react-redux";
 import Toast, { BaseToastProps } from "react-native-toast-message";
 import { View, Text, StatusBar } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import AntDesign from "@expo/vector-icons/AntDesign";
 import store from "features/store/store";
 import AddScreen from "screens/AddScreen/AddScreen";
 import MovieListScreen from "screens/MovieListScreen/MovieList";
 import TvShowListScreen from "screens/TvShowListScreen/TvShowList";
-import AddTvShow from "features/tvShowList/components/AddTvShow";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Feather from "@expo/vector-icons/Feather";
 

@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  ScrollView,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-  Image,
-} from "react-native";
+import { Text, TextInput, TouchableOpacity, View, Image } from "react-native";
 import { ListItem, Button, Input } from "@rneui/base";
 import styles from "./styles";
 import { Icon } from "@rneui/base";
@@ -19,7 +12,6 @@ import {
   subscribeToMovies,
 } from "features/movieList/actions/thunks";
 import { AppDispatch } from "features/store/store";
-import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 
 export default function AddMovie() {
   const dispatch: AppDispatch = useDispatch();
@@ -76,54 +68,51 @@ export default function AddMovie() {
   }, [dispatch]);
 
   return (
-      <View style={styles.container}>
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search movies"
-            onChangeText={(text: string) => setKeyword(text)}
-            onSubmitEditing={handleSearch}
-          />
-          <TouchableOpacity onPress={handleSearch}>
-            <Icon name="search" color="white"></Icon>
-          </TouchableOpacity>
-        </View>
-        {searchResults.length > 1 ? (
-          <View style={styles.searchResultsContainer}>
-            {searchResults.map((item: SearchResults, index: number) => (
-              <ListItem
-                key={index}
-                bottomDivider
-                containerStyle={{ backgroundColor: "#121212" }}
-              >
-                <Image
-                  style={styles.moviePosterArt}
-                  source={{
-                    uri: "https://image.tmdb.org/t/p/w500" + item.poster_path,
-                  }}
-                ></Image>
-                <ListItem.Content>
-                  <ListItem.Title style={{ color: "white", fontSize: 17 }}>
-                    {item.original_title}
-                  </ListItem.Title>
-                  <ListItem.Subtitle style={{ color: "white" }}>
-                    {item.release_date}
-                  </ListItem.Subtitle>
-                  <View style={styles.buttonContainer}>
-                    <Button
-                      type="outline"
-                      onPress={() => handleMovieSave(item)}
-                    >
-                      Add Movie
-                    </Button>
-                  </View>
-                </ListItem.Content>
-              </ListItem>
-            ))}
-          </View>
-        ) : (
-          <Text></Text>
-        )}
+    <View style={styles.container}>
+      <View style={styles.searchContainer}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search movies"
+          onChangeText={(text: string) => setKeyword(text)}
+          onSubmitEditing={handleSearch}
+        />
+        <TouchableOpacity onPress={handleSearch}>
+          <Icon name="search" color="white"></Icon>
+        </TouchableOpacity>
       </View>
+      {searchResults.length > 1 ? (
+        <View style={styles.searchResultsContainer}>
+          {searchResults.map((item: SearchResults, index: number) => (
+            <ListItem
+              key={index}
+              bottomDivider
+              containerStyle={{ backgroundColor: "#121212" }}
+            >
+              <Image
+                style={styles.moviePosterArt}
+                source={{
+                  uri: "https://image.tmdb.org/t/p/w500" + item.poster_path,
+                }}
+              ></Image>
+              <ListItem.Content>
+                <ListItem.Title style={{ color: "white", fontSize: 17 }}>
+                  {item.original_title}
+                </ListItem.Title>
+                <ListItem.Subtitle style={{ color: "white" }}>
+                  {item.release_date}
+                </ListItem.Subtitle>
+                <View style={styles.buttonContainer}>
+                  <Button type="outline" onPress={() => handleMovieSave(item)}>
+                    Add Movie
+                  </Button>
+                </View>
+              </ListItem.Content>
+            </ListItem>
+          ))}
+        </View>
+      ) : (
+        <Text></Text>
+      )}
+    </View>
   );
 }

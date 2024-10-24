@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, ScrollView, TouchableOpacity } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import styles from "./styles";
 import { ListItem, Button } from "@rneui/base";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "features/store/store";
 import {
   deleteTvShow,
-  editTvShow,
   editTvShowTitle,
   fetchTvShowsFromFirestore,
   updateSeasonOwnership,
@@ -14,7 +19,6 @@ import {
 import { searchTvShowList } from "features/tvShowList/actions/actions";
 import { tvShowQueryRef } from "config/firebase/firebase";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
-import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { CheckBox } from "react-native-elements"; // Checkbox component
 import Feather from "@expo/vector-icons/Feather";
 
@@ -150,7 +154,12 @@ export default function TvShowListScreen() {
             <ListItem
               key={tvshow.id}
               bottomDivider
-              containerStyle={{ backgroundColor: "#121212", padding: 0, paddingBottom: 10, paddingTop: 10 }}
+              containerStyle={{
+                backgroundColor: "#121212",
+                padding: 0,
+                paddingBottom: 10,
+                paddingTop: 10,
+              }}
             >
               <TouchableOpacity
                 onPress={() => handleDelete(tvshow)}

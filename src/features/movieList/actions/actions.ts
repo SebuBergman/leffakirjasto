@@ -73,7 +73,7 @@ export const searchMoviesFailure = (error: any) => ({
 export const updateMoviesSuccess = (movies: MovieList[]) => ({
   type: UPDATE_MOVIES_SUCCESS,
   payload: movies,
-})
+});
 
 export const updateMoviesFailure = (error: any) => ({
   type: UPDATE_MOVIES_FAILURE,

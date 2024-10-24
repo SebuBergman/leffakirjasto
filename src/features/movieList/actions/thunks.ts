@@ -90,7 +90,7 @@ export const addMovieToFirestore = (movie: MovieList) => {
         title: movie.title,
         id: generatedId,
         imageSrc: movie.imageSrc,
-        releaseDate: movie.releaseDate
+        releaseDate: movie.releaseDate,
       });
       dispatch(addMovieSuccess({ ...movie, id: generatedId }));
     } catch (error) {
@@ -116,7 +116,6 @@ export const subscribeToMovies = () => {
     return unsubscribe; // Return unsubscribe for clean up
   };
 };
-
 
 // Thunk for searching movies using The Movie DB API
 export const searchMovies = (keyword: string) => {

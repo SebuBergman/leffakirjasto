@@ -13,6 +13,7 @@ export default StyleSheet.create({
   },
 
   //Refresh button
+  /*
   refreshContainer: {
     display: "flex",
     flexDirection: "row",
@@ -20,14 +21,7 @@ export default StyleSheet.create({
   },
   refreshButton: {
     justifyContent: "flex-end",
-  },
-
-  //Edit button and input styles
-  editContainer: {
-    display: "flex",
-    flexDirection: "column",
-    width: "100%",
-  },
+  },*/
 
   editInput: {
     padding: 10,
@@ -37,18 +31,6 @@ export default StyleSheet.create({
     borderRadius: 10,
     width: 335,
     backgroundColor: "#FFFFFF",
-  },
-
-  editButton: {
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 10,
-    backgroundColor: "#121212",
-    padding: 10,
-    borderRadius: 5,
-    color: "white",
-    fontWeight: "bold",
-    fontSize: 16,
   },
 
   //Search for movies Input styles
