@@ -6,8 +6,11 @@ export default StyleSheet.create({
     height: "100%",
   },
   movieContainer: {
-    marginTop: 10,
+    marginTop: 20,
     width: "100%",
+    backgroundColor: "#121212",
+  },
+  movieWrapper: {
     backgroundColor: "#121212",
   },
   movieItemContainer: {

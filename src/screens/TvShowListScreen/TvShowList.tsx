@@ -150,7 +150,7 @@ export default function TvShowListScreen() {
             <ListItem
               key={tvshow.id}
               bottomDivider
-              containerStyle={{ backgroundColor: "#121212", padding: 0 }}
+              containerStyle={{ backgroundColor: "#121212", padding: 0, paddingBottom: 10, paddingTop: 10 }}
             >
               <TouchableOpacity
                 onPress={() => handleDelete(tvshow)}
@@ -174,20 +174,13 @@ export default function TvShowListScreen() {
                     ) : (
                       <View style={styles.tvShowTitleContainer}>
                         <View style={styles.tvShowTitleWrapper}>
-                          <ListItem.Title style={styles.tvShowTitle}>
-                            {tvshow.title}
-                          </ListItem.Title>
-                          <Button
-                            type="outline"
+                          <TouchableOpacity
                             onPress={() => handleEditTitle(tvshow)}
-                            containerStyle={{ marginLeft: 10 }}
                           >
-                            <MaterialIcons
-                              name="edit"
-                              size={16}
-                              color="white"
-                            />
-                          </Button>
+                            <ListItem.Title style={styles.tvShowTitle}>
+                              {tvshow.title}
+                            </ListItem.Title>
+                          </TouchableOpacity>
                         </View>
                       </View>
                     )}

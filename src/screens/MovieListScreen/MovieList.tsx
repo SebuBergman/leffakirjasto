@@ -83,7 +83,7 @@ export default function MovieListScreen() {
             <ListItem
               key={movie.id}
               bottomDivider
-              containerStyle={{ backgroundColor: "#121212" }}
+              containerStyle={styles.movieWrapper}
             >
               <TouchableOpacity
                 onPress={() => handleDelete(movie)}
@@ -110,18 +110,11 @@ export default function MovieListScreen() {
                   </View>
                 ) : (
                   <>
-                    <ListItem.Title style={{ color: "white", fontSize: 18 }}>
-                      {movie.title}
-                    </ListItem.Title>
-                    <View style={styles.buttonContainer}>
-                      <Button
-                        title="Edit"
-                        type="outline"
-                        onPress={() => handleEdit(movie)}
-                      >
-                        <MaterialIcons name="edit" size={24} color="white" />
-                      </Button>
-                    </View>
+                    <TouchableOpacity onPress={() => handleEdit(movie)}>
+                      <ListItem.Title style={{ color: "white", fontSize: 18 }}>
+                        {movie.title}
+                      </ListItem.Title>
+                    </TouchableOpacity>
                   </>
                 )}
               </ListItem.Content>

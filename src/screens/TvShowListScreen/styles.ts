@@ -8,8 +8,7 @@ export default StyleSheet.create({
     width: "100%",
   },
   tvShowContainer: {
-    marginTop: 10,
-    width: "100%",
+    marginTop: 20,
     backgroundColor: "#121212",
   },
 
@@ -36,7 +35,7 @@ export default StyleSheet.create({
     height: 40,
     borderWidth: 1,
     borderRadius: 10,
-    width: 340,
+    width: 335,
     backgroundColor: "#FFFFFF",
   },
 
@@ -74,7 +73,7 @@ export default StyleSheet.create({
 
   tvShowListDetailsContainer: {
     alignItems: "flex-start",
-    padding: 10,
+    marginTop: 10,
   },
 
   titleContainer: {
@@ -154,7 +153,7 @@ export default StyleSheet.create({
   // Delete tv show button styles
   deleteButtonStyle: {
     position: "absolute",
-    top: 10,
-    right: 10,
+    top: 20,
+    right: 15,
   },
 });
