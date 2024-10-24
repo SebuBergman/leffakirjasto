@@ -78,7 +78,7 @@ export default function AddTvShow() {
           style={styles.searchInput}
         />
       </View>
-      <ScrollView style={styles.AddTvShowContainer}>
+      <View style={styles.AddTvShowContainer}>
         <View style={styles.seasonCountContainer}>
           {/* Dropdown to select the number of seasons */}
           <Text style={styles.label}>Select the number of seasons:</Text>
@@ -121,7 +121,7 @@ export default function AddTvShow() {
             />
           </View>
         )}
-      </ScrollView>
+      </View>
     </View>
   );
 }

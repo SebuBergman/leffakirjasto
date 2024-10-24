@@ -121,7 +121,6 @@ export const subscribeToMovies = () => {
 // Thunk for searching movies using The Movie DB API
 export const searchMovies = (keyword: string) => {
   return async (dispatch: any) => {
-    const generatedId = uuid.v4();
     try {
       const response = await fetch(
         `https://api.themoviedb.org/3/search/movie?api_key=${MOVIEDB_API_KEY}&language=en-US&query=${keyword}&page=1&include_adult=false`
@@ -136,7 +135,7 @@ export const searchMovies = (keyword: string) => {
       // Map the API response to the SearchResults state
       const mappedResults: SearchResults[] = data.results.map((item: any) => ({
         original_title: item.original_title,
-        id: generatedId,
+        id: item.id,
         poster_path: item.poster_path,
         release_date: item.release_date,
       }));

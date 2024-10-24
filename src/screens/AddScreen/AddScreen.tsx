@@ -1,40 +1,41 @@
 import React, { useState } from "react";
-import { View, Button, Text } from "react-native";
+import { View, Button, Text, ScrollView, Switch } from "react-native";
 import AddMovie from "features/movieList/components/AddMovie/AddMovie";
 import AddTvShow from "features/tvShowList/components/AddTvShow";
 import styles from "./styles";
 
 export default function AddScreen() {
-  const [isAddingMovie, setIsAddingMovie] = useState(true); // State to track if adding a movie or TV show
+  const [isAddingWhich, setIsAddingWhich] = useState(true); // State to track if adding a movie or TV show
+
+  // Function to handle switch toggle
+  const toggleSwitch = () =>
+    setIsAddingWhich((previousState) => !previousState);
 
   return (
     <View style={styles.container}>
-      <View style={styles.toggleContainer}>
-        {/* Toggle buttons to switch between adding movie or TV show */}
-        <Button
-          title="Add Movie"
-          onPress={() => setIsAddingMovie(true)}
-          disabled={isAddingMovie}
-        />
-        <Button
-          title="Add TV Show"
-          onPress={() => setIsAddingMovie(false)}
-          disabled={!isAddingMovie}
+      <View style={styles.switchContainer}>
+        <Text style={styles.switchLabel}>
+          {isAddingWhich ? "Add Movie" : "Add TV Show"}
+        </Text>
+        <Switch
+          trackColor={{ false: "#767577", true: "#81b0ff" }} // Colors for the switch track
+          thumbColor={isAddingWhich ? "#f5dd4b" : "#f4f3f4"} // Colors for the switch thumb
+          ios_backgroundColor="#3e3e3e"
+          onValueChange={toggleSwitch} // Function to toggle the state
+          value={isAddingWhich} // Bind the value to the switch
         />
       </View>
 
       <View style={styles.formContainer}>
         {/* Conditionally render the appropriate form */}
-        {isAddingMovie ? (
-          <>
-            <Text style={styles.heading}>Add a Movie</Text>
+        {isAddingWhich ? (
+          <ScrollView>
             <AddMovie />
-          </>
+          </ScrollView>
         ) : (
-          <>
-            <Text style={styles.heading}>Add a TV Show</Text>
+          <ScrollView>
             <AddTvShow />
-          </>
+          </ScrollView>
         )}
       </View>
     </View>

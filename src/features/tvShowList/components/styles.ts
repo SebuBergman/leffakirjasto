@@ -37,7 +37,6 @@ const styles = StyleSheet.create({
   AddTvShowContainer: {
     height: "100%",
     padding: 10,
-    marginBottom: 65,
   },
 
   label: {
@@ -59,7 +58,6 @@ const styles = StyleSheet.create({
   checkSeasonsContainer: {
     width: "100%",
     alignItems: "center",
-    marginBottom: 20,
   },
 
   checkboxRows: {

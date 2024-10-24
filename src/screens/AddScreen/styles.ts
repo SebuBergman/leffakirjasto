@@ -2,9 +2,8 @@ import { StyleSheet } from "react-native";
 
 export default StyleSheet.create({
   container: {
-    height: "100%",
     flex: 1,
-    paddingTop: 50,
+    paddingTop: 60,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#121212",
@@ -17,10 +16,21 @@ export default StyleSheet.create({
   formContainer: {
     height: "100%",
     alignItems: "center",
+    marginBottom: 48,
   },
   heading: {
     fontSize: 25,
     textAlign: "center",
     color: "white",
+  },
+  switchContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    marginBottom: 0,
+  },
+  switchLabel: {
+    color: "white",
+    fontSize: 20,
   },
 });

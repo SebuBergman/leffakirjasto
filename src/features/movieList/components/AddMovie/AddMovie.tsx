@@ -76,7 +76,6 @@ export default function AddMovie() {
   }, [dispatch]);
 
   return (
-    <>
       <View style={styles.container}>
         <View style={styles.searchContainer}>
           <TextInput
@@ -90,7 +89,7 @@ export default function AddMovie() {
           </TouchableOpacity>
         </View>
         {searchResults.length > 1 ? (
-          <ScrollView style={styles.searchResultsContainer}>
+          <View style={styles.searchResultsContainer}>
             {searchResults.map((item: SearchResults, index: number) => (
               <ListItem
                 key={index}
@@ -121,11 +120,10 @@ export default function AddMovie() {
                 </ListItem.Content>
               </ListItem>
             ))}
-          </ScrollView>
+          </View>
         ) : (
           <Text></Text>
         )}
       </View>
-    </>
   );
 }

@@ -142,26 +142,6 @@ export default function App() {
               },
             }}
           />
-          <Tabs.Screen
-            name="Add Movie"
-            component={AddMovie}
-            options={{
-              tabBarIcon: () => <Ionicons name="add" size={24} color="white" />,
-              tabBarLabelStyle: {
-                fontSize: 15,
-              },
-            }}
-          />
-          <Tabs.Screen
-            name="Add TvShow"
-            component={AddTvShow}
-            options={{
-              tabBarIcon: () => <Ionicons name="add" size={24} color="white" />,
-              tabBarLabelStyle: {
-                fontSize: 15,
-              },
-            }}
-          />
         </Tabs.Navigator>
       </NavigationContainer>
       <Toast config={toastConfig} />
