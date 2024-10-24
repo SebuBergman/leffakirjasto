@@ -142,4 +142,12 @@ export default StyleSheet.create({
     marginTop: 20,
     gap: 10,
   },
+
+  emptyListStyle: {
+    color: "white",
+    marginLeft: 10,
+    marginTop: 25,
+    textAlign: "center",
+    fontSize: 20,
+  },
 });

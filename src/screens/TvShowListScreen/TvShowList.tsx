@@ -54,6 +54,11 @@ export default function TvShowListScreen() {
   // Use filteredtvshowList if there is a search query, otherwise fallback to the full tvshowList
   const tvShowsToDisplay = searchQuery ? filteredTvShowList : tvShowList;
 
+  // Alphabetically sort the movies by title
+  const sortedTvShows = tvShowsToDisplay.sort((a: any, b: any) => {
+    return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
+  });
+
   //Function to handle tvshowList deletion
   const handleDelete = (tvshow: any) => {
     dispatch(deleteTvShow(tvshow));
@@ -138,11 +143,11 @@ export default function TvShowListScreen() {
           onChangeText={(text) => handleSearch(text)}
         />
       </View>
-      {tvShowsToDisplay.length > 0 ? (
+      {sortedTvShows.length > 0 ? (
         <ScrollView style={styles.tvShowContainer}>
-          {tvShowsToDisplay.map((tvshow: any) => (
+          {sortedTvShows.map((tvshow: any) => (
             <ListItem
-              key={tvshow.title}
+              key={tvshow.id}
               bottomDivider
               containerStyle={{ backgroundColor: "#121212", padding: 0 }}
             >
@@ -286,7 +291,7 @@ export default function TvShowListScreen() {
           ))}
         </ScrollView>
       ) : (
-        <Text>No TV shows found.</Text>
+        <Text style={styles.emptyListStyle}>No TV shows found.</Text>
       )}
     </View>
   );

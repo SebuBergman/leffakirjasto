@@ -63,4 +63,12 @@ export default StyleSheet.create({
     width: 340,
     backgroundColor: "#FFFFFF",
   },
+
+  emptyListStyle: {
+    color: "white",
+    marginLeft: 10,
+    marginTop: 25,
+    textAlign: "center",
+    fontSize: 20,
+  },
 });

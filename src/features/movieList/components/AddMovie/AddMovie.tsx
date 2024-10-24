@@ -30,7 +30,6 @@ export default function AddMovie() {
   // Call the searchMovies thunk
   const handleSearch = () => {
     dispatch(searchMovies(keyword));
-    console.log(searchResults);
   };
 
   const handleMovieSave = (item: SearchResults) => {
@@ -64,6 +63,7 @@ export default function AddMovie() {
       text1: "Success!",
       text2: "Movie added successfully",
     });
+    handleSearch();
   };
 
   // Effect to subscribe to Firestore updates

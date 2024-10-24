@@ -43,6 +43,11 @@ export default function MovieListScreen() {
   // Use filteredMovieList if there is a search query, otherwise fallback to the full movieList
   const moviesToDisplay = searchQuery ? filteredMovieList : movieList;
 
+  // Alphabetically sort the movies by title
+  const sortedMovies = moviesToDisplay.sort((a: any, b: any) => {
+    return a.title.toLowerCase().localeCompare(b.title.toLowerCase());
+  });
+
   //Function to handle movie deletion
   const handleDelete = (movie: any) => {
     dispatch(deleteMovie(movie));
@@ -73,9 +78,9 @@ export default function MovieListScreen() {
       </View>
       {moviesToDisplay.length > 0 ? (
         <ScrollView style={styles.movieContainer}>
-          {moviesToDisplay.map((movie: any) => (
+          {sortedMovies.map((movie: any) => (
             <ListItem
-              key={movie.title}
+              key={movie.id}
               bottomDivider
               containerStyle={{ backgroundColor: "#121212" }}
             >
@@ -128,7 +133,7 @@ export default function MovieListScreen() {
           ))}
         </ScrollView>
       ) : (
-        <Text></Text>
+        <Text style={styles.emptyListStyle}>No Movies found.</Text>
       )}
     </View>
   );
