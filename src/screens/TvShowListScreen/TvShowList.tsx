@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, ScrollView } from "react-native";
+import { Text, TextInput, View, ScrollView, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { ListItem, Button } from "@rneui/base";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,6 +16,7 @@ import { tvShowQueryRef } from "config/firebase/firebase";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import { CheckBox } from "react-native-elements"; // Checkbox component
+import Feather from "@expo/vector-icons/Feather";
 
 export default function TvShowListScreen() {
   const dispatch: AppDispatch = useDispatch();
@@ -151,6 +152,12 @@ export default function TvShowListScreen() {
               bottomDivider
               containerStyle={{ backgroundColor: "#121212", padding: 0 }}
             >
+              <TouchableOpacity
+                onPress={() => handleDelete(tvshow)}
+                style={styles.deleteButtonStyle}
+              >
+                <Feather name="x" size={24} color="white" />
+              </TouchableOpacity>
               <ListItem.Content>
                 <View style={styles.tvShowListDetailsContainer}>
                   <View style={styles.titleContainer}>
@@ -177,19 +184,6 @@ export default function TvShowListScreen() {
                           >
                             <MaterialIcons
                               name="edit"
-                              size={16}
-                              color="white"
-                            />
-                          </Button>
-                        </View>
-                        <View>
-                          <Button
-                            title="Delete"
-                            type="outline"
-                            onPress={() => handleDelete(tvshow)}
-                          >
-                            <MaterialCommunityIcons
-                              name="delete"
                               size={16}
                               color="white"
                             />

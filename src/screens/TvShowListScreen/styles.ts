@@ -150,4 +150,11 @@ export default StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
   },
+
+  // Delete tv show button styles
+  deleteButtonStyle: {
+    position: "absolute",
+    top: 10,
+    right: 10,
+  },
 });

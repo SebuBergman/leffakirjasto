@@ -40,7 +40,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    width: 220,
+    width: 200,
     backgroundColor: "#FFFFFF",
   },
 
@@ -64,11 +64,19 @@ export default StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
 
+  // Styles for the empty list text
   emptyListStyle: {
     color: "white",
     marginLeft: 10,
     marginTop: 25,
     textAlign: "center",
     fontSize: 20,
+  },
+
+  // Delete tv show button styles
+  deleteButtonStyle: {
+    position: "absolute",
+    top: 10,
+    right: 10,
   },
 });

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Image, ScrollView } from "react-native";
+import { Text, TextInput, View, Image, ScrollView, TouchableOpacity } from "react-native";
 import styles from "./styles";
 import { ListItem, Button } from "@rneui/base";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,6 +13,7 @@ import { searchMovieList } from "features/movieList/actions/actions";
 import { AppDispatch } from "features/store/store";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import Feather from "@expo/vector-icons/Feather";
 
 export default function MovieListScreen() {
   const dispatch: AppDispatch = useDispatch();
@@ -84,6 +85,12 @@ export default function MovieListScreen() {
               bottomDivider
               containerStyle={{ backgroundColor: "#121212" }}
             >
+              <TouchableOpacity
+                onPress={() => handleDelete(movie)}
+                style={styles.deleteButtonStyle}
+              >
+                <Feather name="x" size={24} color="white" />
+              </TouchableOpacity>
               <Image
                 style={styles.moviePosterArt}
                 source={{
@@ -103,7 +110,7 @@ export default function MovieListScreen() {
                   </View>
                 ) : (
                   <>
-                    <ListItem.Title style={{ color: "white" }}>
+                    <ListItem.Title style={{ color: "white", fontSize: 18 }}>
                       {movie.title}
                     </ListItem.Title>
                     <View style={styles.buttonContainer}>
@@ -113,17 +120,6 @@ export default function MovieListScreen() {
                         onPress={() => handleEdit(movie)}
                       >
                         <MaterialIcons name="edit" size={24} color="white" />
-                      </Button>
-                      <Button
-                        title="Delete"
-                        type="outline"
-                        onPress={() => handleDelete(movie)}
-                      >
-                        <MaterialCommunityIcons
-                          name="delete"
-                          size={24}
-                          color="white"
-                        />
                       </Button>
                     </View>
                   </>
