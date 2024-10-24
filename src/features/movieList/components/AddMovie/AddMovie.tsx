@@ -30,14 +30,19 @@ export default function AddMovie() {
   // Call the searchMovies thunk
   const handleSearch = () => {
     dispatch(searchMovies(keyword));
+    console.log(searchResults);
   };
 
   const handleMovieSave = (item: SearchResults) => {
-    const movieExists = movieList.some(
+    const movieTitleExists = movieList.some(
       (movie: MovieList) => movie.title === item.original_title
     );
 
-    if (movieExists) {
+    const movieDateMatches = movieList.some(
+      (movie: MovieList) => movie.releaseDate === item.release_date
+    );
+
+    if (movieTitleExists && movieDateMatches) {
       Toast.show({
         type: "error",
         text1: "Error!",
@@ -50,9 +55,15 @@ export default function AddMovie() {
       title: item.original_title,
       id: item.id,
       imageSrc: item.poster_path || "",
+      releaseDate: item.release_date,
     };
 
     dispatch(addMovieToFirestore(movieToSave));
+    Toast.show({
+      type: "success",
+      text1: "Success!",
+      text2: "Movie added successfully",
+    });
   };
 
   // Effect to subscribe to Firestore updates

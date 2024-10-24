@@ -90,6 +90,7 @@ export const addMovieToFirestore = (movie: MovieList) => {
         title: movie.title,
         id: generatedId,
         imageSrc: movie.imageSrc,
+        releaseDate: movie.releaseDate
       });
       dispatch(addMovieSuccess({ ...movie, id: generatedId }));
     } catch (error) {

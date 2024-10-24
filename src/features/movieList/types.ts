@@ -9,7 +9,7 @@ export interface MovieList {
   title: string;
   id: string | number[];
   imageSrc: string;
-  alt?: string;
+  releaseDate: string | undefined;
 }
 
 export interface UnfilteredMovieList {
