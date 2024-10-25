@@ -7,28 +7,30 @@ export interface Movie {
 
 export interface MovieList {
   title: string;
-  id: string | number[];
+  id: number;
   imageSrc: string;
   releaseDate: string | undefined;
 }
 
 export interface UnfilteredMovieList {
   title: string;
-  id: string | number[];
+  id: number;
   imageSrc: string;
   alt?: string;
 }
 
 export interface FilteredMovieList {
   title: string;
-  id: string | number[];
+  id: number;
   imageSrc: string;
   alt?: string;
 }
 
 export interface SearchResults {
   original_title: string | any;
-  id: string | number[];
-  poster_path?: string;
-  release_date?: string;
+  id: number;
+  poster_path: string;
+  release_date: string;
+  overview: string;
+  isExpanded: boolean;
 }

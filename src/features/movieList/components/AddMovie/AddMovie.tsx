@@ -8,10 +8,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { MovieList, SearchResults } from "features/movieList/types";
 import {
   addMovieToFirestore,
-  searchMovies,
+  searchMovieDB,
   subscribeToMovies,
 } from "features/movieList/actions/thunks";
 import { AppDispatch } from "features/store/store";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
+import { toggleExpanded } from "features/movieList/actions/actions";
 
 export default function AddMovie() {
   const dispatch: AppDispatch = useDispatch();
@@ -23,7 +25,7 @@ export default function AddMovie() {
   // Call the searchMovies thunk
   const handleSearch = () => {
     setSearchPerformed(true);
-    dispatch(searchMovies(keyword));
+    dispatch(searchMovieDB(keyword));
   };
 
   const handleMovieSave = (item: SearchResults) => {
@@ -90,6 +92,16 @@ export default function AddMovie() {
               bottomDivider
               containerStyle={{ backgroundColor: "#121212" }}
             >
+              <TouchableOpacity
+                onPress={() => handleMovieSave(item)}
+                style={styles.addButtonStyle}
+              >
+                <MaterialCommunityIcons
+                  name="movie-open-plus"
+                  size={24}
+                  color="white"
+                />
+              </TouchableOpacity>
               <Image
                 style={styles.moviePosterArt}
                 source={{
@@ -103,11 +115,20 @@ export default function AddMovie() {
                 <ListItem.Subtitle style={{ color: "white" }}>
                   {item.release_date}
                 </ListItem.Subtitle>
-                <View style={styles.buttonContainer}>
-                  <Button type="outline" onPress={() => handleMovieSave(item)}>
-                    Add Movie
-                  </Button>
-                </View>
+                <Text
+                  style={{ color: "white", paddingTop: 5 }}
+                  numberOfLines={item.isExpanded ? undefined : 2}
+                >
+                  {item.overview}
+                </Text>
+                {item.overview.split(" ").length > 20 && (
+                  <Button
+                    type="clear"
+                    title={item.isExpanded ? "Read Less" : "Read More"}
+                    onPress={() => dispatch(toggleExpanded(item.id))}
+                    titleStyle={{ color: "#FF6347" }}
+                  />
+                )}
               </ListItem.Content>
             </ListItem>
           ))}

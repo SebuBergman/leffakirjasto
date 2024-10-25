@@ -12,6 +12,7 @@ import {
   SEARCH_MOVIES_FAILURE,
   SEARCH_MOVIES_SUCCESS,
   SEARCH_MOVIES,
+  TOGGLE_EXPANDED,
 } from "./actionTypes";
 
 export const fetchMoviesSuccess = (movies: any[]) => ({
@@ -78,4 +79,9 @@ export const updateMoviesSuccess = (movies: MovieList[]) => ({
 export const updateMoviesFailure = (error: any) => ({
   type: UPDATE_MOVIES_FAILURE,
   payload: error,
+});
+
+export const toggleExpanded = (id: string | number) => ({
+  type: TOGGLE_EXPANDED,
+  payload: id,
 });

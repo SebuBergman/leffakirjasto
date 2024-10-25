@@ -86,13 +86,14 @@ export const addMovieToFirestore = (movie: MovieList) => {
   return async (dispatch: any) => {
     const generatedId = movie.id || uuid.v4();
     try {
-      await setDoc(doc(FIREBASE_DB, "movies", `${generatedId}`), {
+      await setDoc(doc(FIREBASE_DB, "movies", `${movie.id}`), {
         title: movie.title,
-        id: generatedId,
+        id: movie.id,
         imageSrc: movie.imageSrc,
         releaseDate: movie.releaseDate,
+        isExpanded: false,
       });
-      dispatch(addMovieSuccess({ ...movie, id: generatedId }));
+      dispatch(addMovieSuccess({ ...movie, id: movie.id }));
     } catch (error) {
       console.error("Error adding movie: ", error);
       dispatch(addMovieFailure(error));
@@ -118,7 +119,7 @@ export const subscribeToMovies = () => {
 };
 
 // Thunk for searching movies using The Movie DB API
-export const searchMovies = (keyword: string) => {
+export const searchMovieDB = (keyword: string) => {
   return async (dispatch: any) => {
     try {
       const response = await fetch(
@@ -126,6 +127,7 @@ export const searchMovies = (keyword: string) => {
       );
       const data = await response.json();
 
+      console.log(data);
       if (!data.results || data.results.length === 0) {
         dispatch(searchMoviesSuccess([]));
         return;
@@ -137,6 +139,7 @@ export const searchMovies = (keyword: string) => {
         id: item.id,
         poster_path: item.poster_path,
         release_date: item.release_date,
+        overview: item.overview,
       }));
 
       dispatch(searchMoviesSuccess(mappedResults));

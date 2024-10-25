@@ -8,6 +8,7 @@ import {
   SEARCH_MOVIES,
   SEARCH_MOVIES_FAILURE,
   SEARCH_MOVIES_SUCCESS,
+  TOGGLE_EXPANDED,
 } from "./actionTypes";
 
 interface MovieState {
@@ -25,6 +26,8 @@ const initialState = {
       release_date: "",
       id: "",
       poster_path: "",
+      overview: "",
+      isExpanded: false,
     },
   ],
   error: null, // Add error state for proper error handling
@@ -82,6 +85,15 @@ export const movieReducer = (state = initialState, action: any) => {
       return {
         ...state,
         error: action.payload,
+      };
+    case TOGGLE_EXPANDED:
+      return {
+        ...state,
+        searchResults: state.searchResults.map((movie) =>
+          movie.id === action.payload
+            ? { ...movie, isExpanded: !movie.isExpanded }
+            : movie
+        ),
       };
     default:
       return state;

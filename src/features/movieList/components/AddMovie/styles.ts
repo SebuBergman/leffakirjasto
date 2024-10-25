@@ -20,6 +20,7 @@ export default StyleSheet.create({
   moviePosterArt: {
     width: 100,
     height: 150,
+    margin: 0,
   },
 
   //Search Input styles
@@ -38,5 +39,16 @@ export default StyleSheet.create({
     padding: 10,
     width: 300,
     backgroundColor: "#FFFFFF",
+  },
+
+  addButton: {
+    fontSize: 5,
+  },
+
+  // Delete tv show button styles
+  addButtonStyle: {
+    position: "absolute",
+    top: 10,
+    right: 10,
   },
 });
