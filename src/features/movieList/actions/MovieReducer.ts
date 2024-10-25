@@ -21,10 +21,10 @@ const initialState = {
   filteredMovieList: [],
   searchResults: [
     {
-      original_title: "The Movie",
-      release_date: "Today",
-      id: "MovieID",
-      poster_path: "https://via.placeholder.com/150",
+      original_title: "",
+      release_date: "",
+      id: "",
+      poster_path: "",
     },
   ],
   error: null, // Add error state for proper error handling

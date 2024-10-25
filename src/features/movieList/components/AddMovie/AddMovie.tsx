@@ -18,9 +18,11 @@ export default function AddMovie() {
   const [keyword, setKeyword] = useState("");
   const searchResults = useSelector((state: any) => state.movies.searchResults); // Fetch search results from Redux
   const movieList = useSelector((state: any) => state.movies.movieList);
+  const [searchPerformed, setSearchPerformed] = useState(false);
 
   // Call the searchMovies thunk
   const handleSearch = () => {
+    setSearchPerformed(true);
     dispatch(searchMovies(keyword));
   };
 
@@ -56,6 +58,7 @@ export default function AddMovie() {
       text2: "Movie added successfully",
     });
     handleSearch();
+    setSearchPerformed(false);
   };
 
   // Effect to subscribe to Firestore updates
@@ -80,7 +83,7 @@ export default function AddMovie() {
           <Icon name="search" color="white"></Icon>
         </TouchableOpacity>
       </View>
-      {searchResults.length > 1 ? (
+      {searchPerformed && searchResults.length > 0 ? (
         <View style={styles.searchResultsContainer}>
           {searchResults.map((item: SearchResults, index: number) => (
             <ListItem
