@@ -58,7 +58,6 @@ export default function AddMovie() {
       text2: "Movie added successfully",
     });
     handleSearch();
-    setSearchPerformed(false);
   };
 
   // Effect to subscribe to Firestore updates
