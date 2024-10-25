@@ -80,9 +80,6 @@ export default function AddMovie() {
           onChangeText={(text: string) => setKeyword(text)}
           onSubmitEditing={handleSearch}
         />
-        <TouchableOpacity onPress={handleSearch}>
-          <Icon name="search" color="white"></Icon>
-        </TouchableOpacity>
       </View>
       {searchPerformed && searchResults.length > 0 ? (
         <View style={styles.searchResultsContainer}>
@@ -90,7 +87,7 @@ export default function AddMovie() {
             <ListItem
               key={index}
               bottomDivider
-              containerStyle={{ backgroundColor: "#121212" }}
+              containerStyle={{ backgroundColor: "#121212", paddingLeft: 0, }}
             >
               <TouchableOpacity
                 onPress={() => handleMovieSave(item)}
@@ -127,6 +124,7 @@ export default function AddMovie() {
                     title={item.isExpanded ? "Read Less" : "Read More"}
                     onPress={() => dispatch(toggleExpanded(item.id))}
                     titleStyle={{ color: "#FF6347" }}
+                    containerStyle={styles.readmoreButton}
                   />
                 )}
               </ListItem.Content>

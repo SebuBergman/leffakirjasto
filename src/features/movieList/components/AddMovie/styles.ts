@@ -9,6 +9,8 @@ export default StyleSheet.create({
   searchResultsContainer: {
     marginTop: 10,
     width: "100%",
+    margin: 0,
+    padding: 0,
     backgroundColor: "#121212",
   },
   buttonContainer: {
@@ -37,7 +39,7 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
-    width: 300,
+    width: 340,
     backgroundColor: "#FFFFFF",
   },
 
@@ -50,5 +52,14 @@ export default StyleSheet.create({
     position: "absolute",
     top: 10,
     right: 10,
+  },
+
+  readmoreButton: {
+    padding: 0,
+    margin: 0,
+  },
+
+  clearButton: {
+    padding: 10, // Adjust the size as needed
   },
 });
