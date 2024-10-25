@@ -12,10 +12,11 @@ export default StyleSheet.create({
   },
   movieWrapper: {
     backgroundColor: "#121212",
+    paddingLeft: 0,
   },
   moviePosterArt: {
-    width: 100,
-    height: 150,
+    width: 68,
+    height: 100,
   },
 
   //Refresh button
