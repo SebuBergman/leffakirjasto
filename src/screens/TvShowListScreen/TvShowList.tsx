@@ -13,7 +13,7 @@ import { AppDispatch } from "features/store/store";
 import {
   deleteTvShow,
   editTvShowTitle,
-  fetchTvShowsFromFirestore,
+  fetchTvShows,
   updateSeasonOwnership,
 } from "features/tvShowList/actions/thunks";
 import { searchTvShowList } from "features/tvShowList/actions/actions";
@@ -41,7 +41,7 @@ export default function TvShowListScreen() {
   const [editingSeasonsId, setEditingSeasonsId] = useState<string | null>(null);
 
   useEffect(() => {
-    const unsubscribe = dispatch(fetchTvShowsFromFirestore(tvShowQueryRef));
+    const unsubscribe = dispatch(fetchTvShows(tvShowQueryRef));
 
     return () => {
       if (unsubscribe) {

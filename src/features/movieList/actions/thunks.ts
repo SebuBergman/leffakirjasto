@@ -26,7 +26,7 @@ import { MovieList, SearchResults } from "../types";
 import { MOVIEDB_API_KEY } from "@env";
 
 // Thunk for fetching movies in the Firestore collection
-export const fetchMoviesFromFirestore = (movieQueryRef: any) => {
+export const fetchMovies = (movieQueryRef: any) => {
   return (dispatch: any) => {
     try {
       const subscriber = onSnapshot(
@@ -82,7 +82,7 @@ export const editMovie = (id: string, newTitle: string) => {
 };
 
 // Thunk for adding new movies to Firestore collection
-export const addMovieToFirestore = (movie: MovieList) => {
+export const addMovie = (movie: MovieList) => {
   return async (dispatch: any) => {
     const generatedId = movie.id || uuid.v4();
     try {

@@ -9,8 +9,8 @@ import {
   ADD_MOVIE_FAILURE,
   UPDATE_MOVIES_SUCCESS,
   UPDATE_MOVIES_FAILURE,
-  SEARCH_MOVIES_FAILURE,
-  SEARCH_MOVIES_SUCCESS,
+  SEARCH_MOVIE_DB_FAILURE,
+  SEARCH_MOVIE_DB_SUCCESS,
   SEARCH_MOVIES,
   TOGGLE_EXPANDED,
 } from "./actionTypes";
@@ -62,12 +62,12 @@ export const addMovieFailure = (error: any) => ({
 });
 
 export const searchMoviesSuccess = (movies: SearchResults[]) => ({
-  type: SEARCH_MOVIES_SUCCESS,
+  type: SEARCH_MOVIE_DB_SUCCESS,
   payload: movies,
 });
 
 export const searchMoviesFailure = (error: any) => ({
-  type: SEARCH_MOVIES_FAILURE,
+  type: SEARCH_MOVIE_DB_FAILURE,
   payload: error,
 });
 

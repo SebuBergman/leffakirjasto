@@ -3,7 +3,7 @@ import { View, TextInput, Button, Text, ScrollView } from "react-native";
 import styles from "./styles"; // Your styles file
 import { useDispatch, useSelector } from "react-redux";
 import { Season, TvShowList } from "../types";
-import { addTvShowToFirestore } from "../actions/thunks";
+import { addTvShow } from "../actions/thunks";
 import uuid from "react-native-uuid";
 import { AppDispatch } from "features/store/store";
 import { CheckBox } from "react-native-elements"; // Checkbox component
@@ -60,7 +60,7 @@ export default function AddTvShow() {
       id: uuid.v4(),
       seasons: seasons,
     };
-    dispatch(addTvShowToFirestore(TvShowToSave)); // Dispatch the thunk to add TV show
+    dispatch(addTvShow(TvShowToSave)); // Dispatch the thunk to add TV show
 
     // Reset form
     setTitle("");
@@ -80,7 +80,6 @@ export default function AddTvShow() {
       </View>
       <View style={styles.AddTvShowContainer}>
         <View style={styles.seasonCountContainer}>
-          {/* Dropdown to select the number of seasons */}
           <Text style={styles.label}>Select the number of seasons:</Text>
           <TextInput
             placeholder="Number of seasons"

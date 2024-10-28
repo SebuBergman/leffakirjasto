@@ -24,7 +24,7 @@ import {
 } from "./actions";
 
 // Thunk for fetching Tv Shows in the Firestore collection
-export const fetchTvShowsFromFirestore = (tvShowQueryRef: any) => {
+export const fetchTvShows = (tvShowQueryRef: any) => {
   return (dispatch: any) => {
     try {
       const subscriber = onSnapshot(
@@ -86,7 +86,7 @@ export const editTvShow = (
 };
 
 // Thunk for adding new TV Shows to Firestore collection
-export const addTvShowToFirestore = (tvshow: TvShowList) => {
+export const addTvShow = (tvshow: TvShowList) => {
   return async (dispatch: any) => {
     const generatedId = tvshow.id || uuid.v4();
     try {

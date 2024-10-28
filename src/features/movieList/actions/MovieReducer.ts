@@ -6,8 +6,8 @@ import {
   FETCH_MOVIES_FAILURE,
   FETCH_MOVIES_SUCCESS,
   SEARCH_MOVIES,
-  SEARCH_MOVIES_FAILURE,
-  SEARCH_MOVIES_SUCCESS,
+  SEARCH_MOVIE_DB_FAILURE,
+  SEARCH_MOVIE_DB_SUCCESS,
   TOGGLE_EXPANDED,
 } from "./actionTypes";
 
@@ -75,13 +75,13 @@ export const movieReducer = (state = initialState, action: any) => {
           movie.id === id ? { ...movie, title: newTitle } : movie
         ),
       };
-    case SEARCH_MOVIES_SUCCESS:
+    case SEARCH_MOVIE_DB_SUCCESS:
       return {
         ...state,
         searchResults: action.payload,
         error: null,
       };
-    case SEARCH_MOVIES_FAILURE:
+    case SEARCH_MOVIE_DB_FAILURE:
       return {
         ...state,
         error: action.payload,

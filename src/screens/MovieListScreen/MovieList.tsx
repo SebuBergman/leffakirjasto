@@ -13,7 +13,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovie,
   editMovie,
-  fetchMoviesFromFirestore,
+  fetchMovies,
 } from "features/movieList/actions/thunks";
 import { movieQueryRef } from "config/firebase";
 import { searchMovieList } from "features/movieList/actions/actions";
@@ -31,7 +31,7 @@ export default function MovieListScreen() {
   const [newTitle, setNewTitle] = useState(""); // State for the new movie title
 
   useEffect(() => {
-    const unsubscribe = dispatch(fetchMoviesFromFirestore(movieQueryRef));
+    const unsubscribe = dispatch(fetchMovies(movieQueryRef));
 
     return () => {
       if (unsubscribe) {

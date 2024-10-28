@@ -8,8 +8,8 @@ import {
   DELETE_TVSHOW_SUCCESS,
   EDIT_TVSHOW,
   SEARCH_TVSHOWS,
-  UPDATE_TVSHOWS_SUCCESS,
-  UPDATE_TVSHOWS_FAILURE,
+  UPDATE_TVSHOW_SUCCESS,
+  UPDATE_TVSHOW_FAILURE,
   ADD_TVSHOW_FAILURE,
   EDIT_TVSHOW_TITLE_SUCCESS,
   EDIT_TVSHOW_TITLE_FAILURE,
@@ -76,12 +76,12 @@ export const addTvShowFailure = (error: any) => ({
 });
 
 export const updateTvShowSuccess = (tvshows: TvShowList[]) => ({
-  type: UPDATE_TVSHOWS_SUCCESS,
+  type: UPDATE_TVSHOW_SUCCESS,
   payload: tvshows,
 });
 
 export const updateTvShowFailure = (error: any) => ({
-  type: UPDATE_TVSHOWS_FAILURE,
+  type: UPDATE_TVSHOW_FAILURE,
   payload: error,
 });
 
