@@ -6,25 +6,6 @@ export default StyleSheet.create({
     height: "100%",
   },
 
-  searchResultsContainer: {
-    marginTop: 10,
-    width: "100%",
-    margin: 0,
-    padding: 0,
-    backgroundColor: "#121212",
-  },
-  buttonContainer: {
-    justifyContent: "center",
-    flexDirection: "row",
-    paddingTop: 10,
-  },
-
-  moviePosterArt: {
-    width: 100,
-    height: 150,
-    margin: 0,
-  },
-
   //Search Input styles
   searchContainer: {
     flexDirection: "row",
@@ -43,8 +24,12 @@ export default StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
 
-  addButton: {
-    fontSize: 5,
+  searchResultsContainer: {
+    marginTop: 10,
+    width: "100%",
+    margin: 0,
+    padding: 0,
+    backgroundColor: "#121212",
   },
 
   // Delete tv show button styles
@@ -54,12 +39,14 @@ export default StyleSheet.create({
     right: 10,
   },
 
-  readmoreButton: {
-    padding: 0,
+  moviePosterArt: {
+    width: 100,
+    height: 150,
     margin: 0,
   },
 
-  clearButton: {
-    padding: 10, // Adjust the size as needed
+  readmoreButton: {
+    padding: 0,
+    margin: 0,
   },
 });

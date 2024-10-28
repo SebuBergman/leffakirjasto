@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View, Image } from "react-native";
-import { ListItem, Button, Input } from "@rneui/base";
+import { ListItem, Button } from "@rneui/base";
 import styles from "./styles";
 import Toast from "react-native-toast-message";
 import { useDispatch, useSelector } from "react-redux";

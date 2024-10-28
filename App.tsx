@@ -20,10 +20,6 @@ interface CustomToastProps extends BaseToastProps {
 }
 
 const toastConfig = {
-  /*
-    Overwrite 'success' type,
-    by modifying the existing `BaseToast` component
-  */
   success: ({ text1, text2 }: CustomToastProps) => (
     <View
       style={{

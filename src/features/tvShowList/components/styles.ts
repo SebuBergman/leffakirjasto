@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     backgroundColor: "#121212",
-    height: "100%",
   },
 
   searchContainer: {
@@ -14,7 +13,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#121212",
   },
 
-  // Style for inputs
+  // Style for search input
   searchInput: {
     height: 40,
     margin: 12,
@@ -25,6 +24,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
 
+  TvShowContainer: {
+    height: "100%",
+    padding: 10,
+  },
+
+  seasonContainer: {
+    marginBottom: 20,
+  },
+
+  // Style for seasons input
   seasonsInput: {
     height: 40,
     borderWidth: 1,
@@ -34,25 +43,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
 
-  AddTvShowContainer: {
-    height: "100%",
-    padding: 10,
-  },
-
   label: {
     fontSize: 16,
     marginBottom: 10,
     color: "white",
   },
 
-  seasonCountContainer: {
-    marginBottom: 20,
-  },
-
   // Checkbox Styles
   checkSeasonsContainer: {
     width: "100%",
     alignItems: "center",
+    marginBottom: 55,
   },
 
   checkboxRows: {
@@ -66,14 +67,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
-    width: "48%",
-    marginBottom: 10,
-  },
-
-  checkbox: {
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
+    width: "50%",
+    marginBottom: 5,
   },
 });
 

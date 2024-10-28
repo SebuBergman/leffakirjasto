@@ -7,21 +7,48 @@ export default StyleSheet.create({
     height: "100%",
     width: "100%",
   },
+
+  //Search for movies Input styles
+  searchContainer: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 30,
+    height: 40,
+    backgroundColor: "#121212",
+  },
+  searchInput: {
+    height: 40,
+    borderWidth: 1,
+    borderRadius: 10,
+    padding: 10,
+    width: 340,
+    backgroundColor: "#FFFFFF",
+  },
+
+  // TV Show Container styles
   tvShowContainer: {
     marginTop: 20,
     backgroundColor: "#121212",
   },
 
-  //Refresh button
-  /*
-  refreshContainer: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
+  // Delete tv show button styles
+  deleteButtonStyle: {
+    position: "absolute",
+    top: 20,
+    right: 15,
   },
-  refreshButton: {
-    justifyContent: "flex-end",
-  },*/
+
+  // TV show List styles
+  tvShowDetailsContainer: {
+    alignItems: "flex-start",
+    marginTop: 10,
+  },
+
+  titleContainer: {
+    marginBottom: 12,
+  },
 
   editInput: {
     padding: 10,
@@ -31,36 +58,6 @@ export default StyleSheet.create({
     borderRadius: 10,
     width: 335,
     backgroundColor: "#FFFFFF",
-  },
-
-  //Search for movies Input styles
-  searchContainer: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "center",
-    marginTop: 20,
-    marginBottom: 10,
-    height: 40,
-    backgroundColor: "#121212",
-  },
-  searchInput: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    borderRadius: 10,
-    padding: 10,
-    width: 340,
-    backgroundColor: "#FFFFFF",
-  },
-
-  tvShowListDetailsContainer: {
-    alignItems: "flex-start",
-    marginTop: 10,
-  },
-
-  titleContainer: {
-    gap: 10,
-    marginBottom: 10,
   },
 
   //TvShow Container styles
@@ -84,26 +81,29 @@ export default StyleSheet.create({
   seasonContainer: {
     flexDirection: "row",
     justifyContent: "flex-start",
-    gap: 10,
+    gap: 25,
     width: "100%",
   },
 
   seasonTitleWrapper: {
     width: 115,
   },
+
   seasonLabel: {
     color: "white",
     fontSize: 15,
   },
+
   seasonNumberContainer: {
     flexDirection: "row",
     alignItems: "flex-start",
-    width: "26%",
+    width: "30%",
   },
+  
   seasonNumberWrapper: {
     flexDirection: "row",
     flexWrap: "wrap",
-    gap: 10,
+    gap: 12,
   },
 
   // Season Edit Container and related styles
@@ -130,12 +130,5 @@ export default StyleSheet.create({
     marginTop: 25,
     textAlign: "center",
     fontSize: 20,
-  },
-
-  // Delete tv show button styles
-  deleteButtonStyle: {
-    position: "absolute",
-    top: 20,
-    right: 15,
   },
 });

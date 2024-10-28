@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { View, TextInput, Button, Text, ScrollView } from "react-native";
+import { View, TextInput, Text } from "react-native";
+import { Button } from "@rneui/base";
 import styles from "./styles"; // Your styles file
 import { useDispatch, useSelector } from "react-redux";
 import { Season, TvShowList } from "../types";
@@ -78,8 +79,8 @@ export default function AddTvShow() {
           style={styles.searchInput}
         />
       </View>
-      <View style={styles.AddTvShowContainer}>
-        <View style={styles.seasonCountContainer}>
+      <View style={styles.TvShowContainer}>
+        <View style={styles.seasonContainer}>
           <Text style={styles.label}>Select the number of seasons:</Text>
           <TextInput
             placeholder="Number of seasons"
@@ -108,7 +109,6 @@ export default function AddTvShow() {
                       checked={seasonCheckStates[seasonNumber] || false} // Check if current season is selected
                       onPress={() => toggleSeason(seasonNumber)}
                       title={`Season ${seasonNumber}`}
-                      style={styles.checkbox}
                     />
                   </View>
                 );

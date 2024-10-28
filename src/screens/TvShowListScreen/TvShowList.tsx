@@ -143,7 +143,7 @@ export default function TvShowListScreen() {
       <View style={styles.searchContainer}>
         <TextInput
           style={styles.searchInput}
-          placeholder="Search Tv Shows"
+          placeholder="Search tv shows"
           value={searchQuery}
           onChangeText={(text) => handleSearch(text)}
         />
@@ -168,7 +168,7 @@ export default function TvShowListScreen() {
                 <Feather name="x" size={24} color="white" />
               </TouchableOpacity>
               <ListItem.Content>
-                <View style={styles.tvShowListDetailsContainer}>
+                <View style={styles.tvShowDetailsContainer}>
                   <View style={styles.titleContainer}>
                     {editingTitleId === tvshow.id ? (
                       <View>
