@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { View, Button, Text, ScrollView, Switch } from "react-native";
-import AddMovie from "features/movieList/components/AddMovie/AddMovie";
+import AddMovie from "features/movieList/components/AddMovie";
 import AddTvShow from "features/tvShowList/components/AddTvShow";
 import styles from "./styles";
 
