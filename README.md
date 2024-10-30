@@ -1,7 +1,7 @@
 <div align="center">
 
   <!--<img src="assets/logo.png" alt="logo" width="200" height="auto" />-->
-  <h1>EcoHub (name still under review)</h1>
+  <h1>Leffakirjasto</h1>
   
   <p>
     This is a personal project for a android app which you can add movies to a firebase firestore and search for movies using the MovieDB API. This app is for us to know which movies and tv shows we own (Physically on DVD).
@@ -26,9 +26,6 @@
   * [Running Tests](#test_tube-running-tests)
   * [Run Locally](#running-run-locally)
   * [Deployment](#triangular_flag_on_post-deployment)
-- [Roadmap](#compass-roadmap)
-- [Contributing](#wave-contributing)
-  * [Code of Conduct](#scroll-code-of-conduct)
 - [FAQ](#grey_question-faq)
 - [License](#warning-license)
 - [Contact](#handshake-contact)
@@ -84,9 +81,7 @@
 
 | Color             | Hex                                                                |
 | ----------------- | ------------------------------------------------------------------ |
-| Primary Color | ![#F8F8F8](https://via.placeholder.com/10/F8F8F8?text=+) #F8F8F8 |
-| Secondary Color | ![#00381E](https://via.placeholder.com/10/00381E?text=+) #00381E |
-| Accent Color | ![#248823](https://via.placeholder.com/10/248823?text=+) #248823 |
+| Primary Color | ![#121212](https://via.placeholder.com/10/121212?text=+) #121212 |
 | Text Color | ![#FFFFFF](https://via.placeholder.com/10/#FFFFFF?text=+) #FFFFFF |
 
 
@@ -96,29 +91,20 @@
 <!-- Prerequisites -->
 ### :bangbang: Prerequisites
 
-This project uses npm as package manager
+This project uses yarn as package manager
 
 ```bash
- npm install
+ yarn install
 ```
 
 <!-- Installation -->
 ### :gear: Installation
 
-Install my-project with npm
+Install my-project with yarn
 
 ```bash
-  npm install my-project
+  yarn install my-project
   cd my-project
-```
-   
-<!-- Running Tests -->
-### :test_tube: Running Tests
-
-To run tests, run the following command
-
-```bash
-  npm test test
 ```
 
 <!-- Run Locally -->
@@ -127,7 +113,7 @@ To run tests, run the following command
 Clone the project
 
 ```bash
-  git clone https://github.com/SebuBergman/EcoHub.git
+  git clone https://github.com/SebuBergman/leffakirjasto.git
 ```
 
 Go to the project directory
@@ -139,61 +125,30 @@ Go to the project directory
 Install dependencies
 
 ```bash
-  npm install
+  yarn install
 ```
 
 Start the server
 
 ```bash
-  npm start
+  yarn android
 ```
 
 
-<!-- Deployment -->
-### :triangular_flag_on_post: Deployment
+<!-- Build -->
+### :triangular_flag_on_post: Build
 
-To deploy this project run
+To build this project
 
 ```bash
-  npm deploy
+  eas build -p android --profile preview
 ```
-
-<!-- Roadmap -->
-## :compass: Roadmap
-
-* [x] Make the front-page
-* [x] Program navigation
-* [ ] Create more pages (Learn -> Environmental issues / Sustainable living tips)
-* [ ] Log in / log out
-* [ ] User Page
-* [ ] Quizzes & submit stories etc.
-* [ ] Forum?
-
-
-<!-- Code of Conduct -->
-### :scroll: Code of Conduct
-
-Please read the -- <!--[Code of Conduct](https://github.com/Louis3797/awesome-readme-template/blob/master/CODE_OF_CONDUCT.md)-->
-
-<!-- FAQ -->
-## :grey_question: FAQ
-
-- Why are you making this a website?
-
-  + I got inspired after finishing my figma prototype
-
-
-<!-- License -->
-## :warning: License
-
---
 
 <!-- Contact -->
 ## :handshake: Contact
 
 Sebastian Bergman - https://www.instagram.com/sebu.bersman
-
-Project Link: https://github.com/SebuBergman/EcoHub/
+Project Link: https://github.com/SebuBergman/leffakirjasto/
 
 
 <!-- Acknowledgments -->
@@ -202,6 +157,6 @@ Project Link: https://github.com/SebuBergman/EcoHub/
 Use this section to mention useful resources and libraries that you have used in your projects.
 
  - [Awesome README](https://github.com/matiassingers/awesome-readme)
- - [React docs](https://reactjs.org/docs/getting-started.html)
+ - [React Native docs]((https://reactnative.dev/docs/getting-started))
  - [React Cheat Sheet](https://www.freecodecamp.org/news/the-react-cheatsheet/)
 
