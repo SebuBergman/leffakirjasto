@@ -48,7 +48,7 @@ export default function TvShowListScreen() {
         unsubscribe();
       }
     };
-  }, [dispatch]);
+  }, [fetchTvShows]);
 
   // Function to handle search
   const handleSearch = (query: string) => {

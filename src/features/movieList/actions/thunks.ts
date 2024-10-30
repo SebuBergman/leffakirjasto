@@ -127,7 +127,6 @@ export const searchMovieDB = (keyword: string) => {
       );
       const data = await response.json();
 
-      console.log(data);
       if (!data.results || data.results.length === 0) {
         dispatch(searchMoviesSuccess([]));
         return;

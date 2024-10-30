@@ -38,7 +38,7 @@ export default function MovieListScreen() {
         unsubscribe();
       }
     };
-  }, [dispatch]);
+  }, [fetchMovies]);
 
   // Function to handle search
   const handleSearch = (query: string) => {
