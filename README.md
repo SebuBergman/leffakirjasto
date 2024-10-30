@@ -52,7 +52,7 @@
 <details>
   <summary>Client</summary>
   <ul>
-    <li><a href="[https://reactjs.org/](https://reactnative.dev)">React Native</a></li>
+    <li><a href="https://reactnative.dev">React Native</a></li>
   </ul>
 </details>
 
