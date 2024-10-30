@@ -9,7 +9,7 @@
     Searching for movies on the api works.
     Adding TV shows is not yet implemented
   </p>
-
+</div>
 <br />
 
 <!-- Table of Contents -->
