@@ -4,7 +4,7 @@
     "slug": "leffakirjasto",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/movie-library.svg",
+    "icon": "./assets/movie-library.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
@@ -16,7 +16,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/movie-library.svg",
+        "foregroundImage": "./assets/movie-library.png",
         "backgroundColor": "#ffffff"
       },
       "package": "com.poidid123.leffakirjasto"
