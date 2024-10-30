@@ -26,8 +26,6 @@
   * [Running Tests](#test_tube-running-tests)
   * [Run Locally](#running-run-locally)
   * [Deployment](#triangular_flag_on_post-deployment)
-- [FAQ](#grey_question-faq)
-- [License](#warning-license)
 - [Contact](#handshake-contact)
 - [Acknowledgements](#gem-acknowledgements)
 
@@ -147,6 +145,7 @@ To build this project
 ## :handshake: Contact
 
 Sebastian Bergman - https://www.instagram.com/sebu.bersman
+
 Project Link: https://github.com/SebuBergman/leffakirjasto/
 
 
