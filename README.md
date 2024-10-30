@@ -44,8 +44,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <p>A screenshot of the front page</p>
-  <img src="https://github.com/SebuBergman/EcoHub/blob/main/src/assets/EcoHub_FrontPage.png" alt="FrontPage" />
+  <p>A screenshot</p>
 </div>
 
 
