@@ -27,7 +27,7 @@ import {
 export const fetchTvShows = (tvShowQueryRef: any) => {
   return (dispatch: any) => {
     try {
-      const subscriber = onSnapshot(
+      const unsubscribe = onSnapshot(
         tvShowQueryRef,
         (snapshot: QuerySnapshot<DocumentData>) => {
           // Ensure that snapshot is a QuerySnapshot
@@ -44,7 +44,8 @@ export const fetchTvShows = (tvShowQueryRef: any) => {
           dispatch(fetchTvShowFailure(error));
         }
       );
-      return () => subscriber();
+      
+      return unsubscribe; // Return unsubscribe directly to caller
     } catch (error) {
       dispatch(fetchTvShowFailure(error));
     }

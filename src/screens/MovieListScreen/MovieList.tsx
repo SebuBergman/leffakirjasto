@@ -34,11 +34,9 @@ export default function MovieListScreen() {
     const unsubscribe = dispatch(fetchMovies(movieQueryRef));
 
     return () => {
-      if (unsubscribe) {
-        unsubscribe();
-      }
+      if (unsubscribe) unsubscribe(); // Ensure unsubscribe is called on unmount
     };
-  }, [fetchMovies]);
+  }, []);
 
   // Function to handle search
   const handleSearch = (query: string) => {

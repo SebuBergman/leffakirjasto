@@ -29,7 +29,7 @@ import { MOVIEDB_API_KEY } from "@env";
 export const fetchMovies = (movieQueryRef: any) => {
   return (dispatch: any) => {
     try {
-      const subscriber = onSnapshot(
+      const unsubscribe = onSnapshot(
         movieQueryRef,
         (snapshot: QuerySnapshot<DocumentData>) => {
           // Ensure that snapshot is a QuerySnapshot
@@ -47,7 +47,7 @@ export const fetchMovies = (movieQueryRef: any) => {
         }
       );
 
-      return () => subscriber();
+      return unsubscribe; // Return unsubscribe directly to caller
     } catch (error) {
       dispatch(fetchMoviesFailure(error));
     }

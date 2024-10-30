@@ -44,11 +44,9 @@ export default function TvShowListScreen() {
     const unsubscribe = dispatch(fetchTvShows(tvShowQueryRef));
 
     return () => {
-      if (unsubscribe) {
-        unsubscribe();
-      }
+      if (unsubscribe) unsubscribe(); // Ensure unsubscribe is called on unmount
     };
-  }, [fetchTvShows]);
+  }, []);
 
   // Function to handle search
   const handleSearch = (query: string) => {

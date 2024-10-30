@@ -28,11 +28,11 @@ export default function AddTvShow() {
   };
 
   const handleTvShowAdd = (title: string) => {
-    const movieExists = tvshowList.some(
-      (movie: TvShowList) => movie.title === title
+    const tvshowExists = tvshowList.some(
+      (tvshow: TvShowList) => tvshow.title === title
     );
 
-    if (movieExists) {
+    if (tvshowExists) {
       Toast.show({
         type: "error",
         text1: "Error!",

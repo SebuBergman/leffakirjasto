@@ -61,15 +61,6 @@ export default function AddMovie() {
     handleSearch();
   };
 
-  // Effect to subscribe to Firestore updates
-  useEffect(() => {
-    const unsubscribe = dispatch(subscribeToMovies());
-
-    return () => {
-      unsubscribe(); // Clean up the listener when component unmounts
-    };
-  }, [dispatch]);
-
   return (
     <View style={styles.container}>
       <View style={styles.searchContainer}>
