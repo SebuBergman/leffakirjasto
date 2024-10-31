@@ -41,8 +41,7 @@
 <!-- Screenshots -->
 ### :camera: Screenshots
 
-<div align="center"> 
-  ![Tutorial][tutorial]
+<div align="center">
   <img src="https://github.com/SebuBergman/leffakirjasto/blob/main/assets/leffakirjasto.mp4" alt="screenshot"/>
 </div>
 
