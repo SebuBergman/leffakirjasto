@@ -42,7 +42,7 @@
 ### :camera: Screenshots
 
 <div align="center"> 
-  <p>A screenshot</p>
+  https://github.com/user-attachments/assets/0cd78792-8f5c-4ba9-a861-79c7294a791a
 </div>
 
 
