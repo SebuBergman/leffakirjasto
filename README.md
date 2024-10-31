@@ -53,6 +53,8 @@
   <summary>Client</summary>
   <ul>
     <li><a href="https://reactnative.dev">React Native</a></li>
+    <li><a href="https://www.typescriptlang.org">Typescript</a></li>
+    <li><a href="https://redux.js.org">Redux</a></li>
   </ul>
 </details>
 
