@@ -6,12 +6,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { Season, TvShowList } from "../types";
 import { addTvShow } from "../actions/thunks";
 import uuid from "react-native-uuid";
-import { AppDispatch } from "features/store/store";
 import { CheckBox } from "react-native-elements"; // Checkbox component
 import Toast from "react-native-toast-message";
+import { useAppDispatch } from "features/store";
 
 export default function AddTvShow() {
-  const dispatch: AppDispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [selectedSeasons, setSelectedSeasons] = useState<number | null>(null); // Selected number of seasons
   const [seasonCheckStates, setSeasonCheckStates] = useState<{
     [key: number]: boolean;

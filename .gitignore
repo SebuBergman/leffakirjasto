@@ -36,4 +36,5 @@ yarn-error.*
 
 src/firebase/
 apiKeys.ts
+
 .env

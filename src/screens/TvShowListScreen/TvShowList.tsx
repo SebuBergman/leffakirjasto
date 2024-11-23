@@ -8,8 +8,6 @@ import {
 } from "react-native";
 import styles from "./styles";
 import { ListItem, Button } from "@rneui/base";
-import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch } from "features/store/store";
 import {
   deleteTvShow,
   editTvShowTitle,
@@ -21,11 +19,12 @@ import { tvShowQueryRef } from "config/firebase/firebase";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import { CheckBox } from "react-native-elements"; // Checkbox component
 import Feather from "@expo/vector-icons/Feather";
+import { useAppDispatch, useAppSelector } from "features/store";
 
 export default function TvShowListScreen() {
-  const dispatch: AppDispatch = useDispatch();
-  const tvShowList = useSelector((state: any) => state.tvshows.tvShowList);
-  const filteredTvShowList = useSelector(
+  const dispatch = useAppDispatch();
+  const tvShowList = useAppSelector((state: any) => state.tvshows.tvShowList);
+  const filteredTvShowList = useAppSelector(
     (state: any) => state.tvshows.filteredTvShowList
   ); // Filtered list for search
   const [searchQuery, setSearchQuery] = useState("");

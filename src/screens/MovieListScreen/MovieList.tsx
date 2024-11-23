@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import styles from "./styles";
 import { ListItem, Button } from "@rneui/base";
-import { useDispatch, useSelector } from "react-redux";
 import {
   deleteMovie,
   editMovie,
@@ -17,13 +16,13 @@ import {
 } from "features/movieList/actions/thunks";
 import { movieQueryRef } from "config/firebase";
 import { searchMovieList } from "features/movieList/actions/actions";
-import { AppDispatch } from "features/store/store";
 import Feather from "@expo/vector-icons/Feather";
+import { useAppDispatch, useAppSelector } from "features/store";
 
 export default function MovieListScreen() {
-  const dispatch: AppDispatch = useDispatch();
-  const movieList = useSelector((state: any) => state.movies.movieList);
-  const filteredMovieList = useSelector(
+  const dispatch = useAppDispatch();
+  const movieList = useAppSelector((state: any) => state.movies.movieList);
+  const filteredMovieList = useAppSelector(
     (state: any) => state.movies.filteredMovieList
   ); // Filtered list for search
   const [searchQuery, setSearchQuery] = useState("");
@@ -31,12 +30,15 @@ export default function MovieListScreen() {
   const [newTitle, setNewTitle] = useState(""); // State for the new movie title
 
   useEffect(() => {
-    const unsubscribe = dispatch(fetchMovies(movieQueryRef));
+  const movieStateListenerUnsubscribe = dispatch(fetchMovies(movieQueryRef));
 
-    return () => {
-      if (unsubscribe) unsubscribe(); // Ensure unsubscribe is called on unmount
-    };
-  }, []);
+  // Ensure movieStateListenerUnsubscribe is callable before invoking
+  return () => {
+    if (movieStateListenerUnsubscribe) {
+      movieStateListenerUnsubscribe();
+    }
+  };
+}, [dispatch]);
 
   // Function to handle search
   const handleSearch = (query: string) => {

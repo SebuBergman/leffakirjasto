@@ -1,11 +1,15 @@
-import { configureStore } from "@reduxjs/toolkit";
-import rootReducer from "./combinedReducers";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
+import movieReducer from "features/movieList/actions/MovieSlice"; // Import the reducer
+import tvShowReducer from "features/tvShowList/actions/TvShowSlice"; // Import the reducer
 
-const store = configureStore({
+const rootReducer = combineReducers({
+  movies: movieReducer, // Use the reducer directly
+  tvshows: tvShowReducer, // Use the reducer directly
+});
+
+export const store = configureStore({
   reducer: rootReducer,
 });
 
-// Define `AppDispatch` as the type for dispatch that can handle Thunks
+export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-export type RootState = ReturnType<typeof store.getState>; // Type for your store state
-export default store;

@@ -7,7 +7,7 @@ export interface Movie {
 
 export interface MovieList {
   title: string;
-  id: number;
+  id: number | number[] | string;
   imageSrc: string;
   releaseDate: string | undefined;
 }
