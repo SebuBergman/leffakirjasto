@@ -1,10 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { movieReducer } from "features/movieList/actions/MovieReducer";
-import { tvShowReducer } from "features/tvShowList/actions/TvShowReducer";
+import { movieSlice } from "features/movieList/actions/MovieSlice";
+import { tvShowSlice } from "features/tvShowList/actions/TvShowSlice";
 
 const rootReducer = combineReducers({
-  movies: movieReducer,
-  tvshows: tvShowReducer,
+  movies: movieSlice,
+  tvshows: tvShowSlice,
 });
 
 export type RootState = ReturnType<typeof rootReducer>; // This will give you the type for the entire state tree
