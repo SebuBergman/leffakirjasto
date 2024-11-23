@@ -7,7 +7,7 @@ export interface TvShow {
 // TV Show Interfaces
 export interface TvShowList {
   title: string; // Title of the TV show
-  id: string | number[]; // Unique identifier for the TV show
+  id: string | number | number[]; // Unique identifier for the TV show
   seasons: Season[]; // Map of seasons related to the TV show
 }
 

@@ -5,12 +5,12 @@ import { Provider } from "react-redux";
 import Toast, { BaseToastProps } from "react-native-toast-message";
 import { View, Text, StatusBar } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import store from "features/store/store";
 import AddScreen from "screens/AddScreen/AddScreen";
 import MovieListScreen from "screens/MovieListScreen/MovieList";
 import TvShowListScreen from "screens/TvShowListScreen/TvShowList";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import Feather from "@expo/vector-icons/Feather";
+import { store } from "features/store";
 
 const Tabs = createBottomTabNavigator();
 
