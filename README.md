@@ -45,7 +45,7 @@
   <img src="https://github.com/SebuBergman/leffakirjasto/blob/main/assets/Leffakirjasto_screenshot.jpg" alt="screenshot"/>
   <br>
   <p>A small video of the functionalities</p>
-  <a href="https://youtu.be/dtqt1ruM7eE">
+  <a href="https://youtu.be/dtqt1ruM7eE" target="_blank">
     <img src="https://github.com/SebuBergman/leffakirjasto/blob/main/assets/Leffakirjasto_screenshot2.jpg" alt="Logo" height="400">
   </a>
 </div>
