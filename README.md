@@ -41,7 +41,13 @@
 ### :camera: Screenshots
 
 <div align="center">
-  <img src="https://github.com/SebuBergman/leffakirjasto/blob/main/assets/leffakirjasto.mp4" alt="screenshot"/>
+  <p>Screenshot of the app</p>
+  <img src="https://github.com/SebuBergman/leffakirjasto/blob/main/assets/Leffakirjasto_screenshot.jpg" alt="screenshot"/>
+  <br>
+  <p>A small video of the functionalities</p>
+  <a href="https://youtu.be/dtqt1ruM7eE">
+    <img src="https://github.com/SebuBergman/leffakirjasto/blob/main/assets/Leffakirjasto_screenshot.jpg" alt="Logo" width="1200">
+  </a>
 </div>
 
 
